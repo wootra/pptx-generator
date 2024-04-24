@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useVisualContainer } from '../../context/VisualContext';
+import { useVisualContainer } from '../../../context/VisualContext';
 import { IoIosCloseCircle } from 'react-icons/io';
 import UpDownButton from './UpDownButton';
 

@@ -11,6 +11,7 @@
     "tailwind:watch": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@types/classnames": "^2.3.1",
     "@types/react-router-dom": "^5.3.3",
     "class-variance-authority": "^0.7.0",

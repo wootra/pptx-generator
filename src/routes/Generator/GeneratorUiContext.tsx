@@ -24,8 +24,8 @@ const useGeneratorUiHook = () => {
             .then(() => {
                 setIsDownloading(false);
             })
-            .catch(e => {
-                setDownloadError(e.message);
+            .catch((e: unknown) => {
+                setDownloadError((e as Error).message);
             });
     }, [download, fileName]);
 

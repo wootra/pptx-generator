@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { useVisualContainer } from '../../context/VisualContext';
+import { useVisualContainer } from '../../../context/VisualContext';
 import { drawLayers } from './drawLayers';
 import { drawSelected } from './drawSelected';
-import { inchToPx, pxToInch } from '../../utils/unitConverter';
+import { inchToPx, pxToInch } from '../../../utils/unitConverter';
 
 const VisualCanvas = () => {
     const { layers, selected, selectedLayer, refreshLayers } =

@@ -20,17 +20,6 @@ const DefaultChartRect: PptxGenJS.IChartOpts = { x: 1, y: 1.9, w: 8, h: 3 };
 
 export type ChartComponent = PptxComponent<ChartDataType, PptxGenJS.IChartOpts>;
 
-export const addRadarChart = (
-    slide: PptxGenJS.Slide,
-    chartData: RadarChartType[],
-    option?: PptxGenJS.IChartOpts
-) => {
-    slide.addChart('radar', chartData, {
-        ...DefaultChartRect,
-        ...option,
-    });
-};
-
 export const createChartObj = (
     chartData: ChartDataType,
     option?: PptxGenJS.IChartOpts

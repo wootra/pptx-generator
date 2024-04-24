@@ -1,30 +1,21 @@
-import { useVisualContainer } from '../../context/VisualContext';
+import { useVisualContainer } from '@/context/VisualContext';
 import TextOptions from './TextOptions';
-import { TextComponent } from '../../utils/addText';
 import ChartOptions from './ChartOptions';
-import NumberField from '../../ui/NumberField';
-import { PptxComponentBase } from '../../utils/types';
+import NumberField from '@/ui/NumberField';
+import { PptxComponentBase } from '@/utils/types';
 import React from 'react';
-import { ChartComponent } from '../../utils/addChart';
-import StringField from '../../ui/StringField';
-const render = (
-    selectedLayer: PptxComponentBase,
-    refreshLayers: () => void
-) => {
+import StringField from '@/ui/StringField';
+import { TextComponent } from '@/utils/createTextObj';
+import { ChartComponent } from '@/utils/createChartObj';
+const render = (selectedLayer: PptxComponentBase) => {
     switch (selectedLayer.type) {
         case 'text':
             return (
-                <TextOptions
-                    selectedLayer={selectedLayer as TextComponent}
-                    refreshLayers={refreshLayers}
-                />
+                <TextOptions selectedLayer={selectedLayer as TextComponent} />
             );
         case 'chart':
             return (
-                <ChartOptions
-                    selectedLayer={selectedLayer as ChartComponent}
-                    refreshLayers={refreshLayers}
-                />
+                <ChartOptions selectedLayer={selectedLayer as ChartComponent} />
             );
         default:
             return <div>Values</div>;
@@ -54,7 +45,7 @@ const Values = () => {
                     refreshLayers();
                 }}
             />
-            {render(selectedLayer, refreshLayers)}
+            {render(selectedLayer)}
         </div>
     );
 };

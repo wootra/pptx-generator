@@ -1,10 +1,10 @@
-import { ChartComponent } from '../../utils/addChart';
-import { TextComponent } from '../../utils/addText';
-import { coordsToPx } from '../../utils/unitConverter';
-import { VisualLayers } from '../../utils/types';
+import { coordsToPx } from '@/utils/unitConverter';
+import { VisualLayers } from '@/utils/types';
 import { fillRect } from './canvas-utils/fillRect';
 import { strokeRect } from './canvas-utils/strokeRect';
 import { setTextDefaultStyles } from './setTextDefaultStyles';
+import { TextComponent } from '@/utils/createTextObj';
+import { ChartComponent } from '@/utils/createChartObj';
 
 export const drawLayers = (
     ctx: CanvasRenderingContext2D,

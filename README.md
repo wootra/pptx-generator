@@ -8,6 +8,12 @@ for the server side, move to [SERVER-SIDE-EXAMPLE](./server/README.md)
 - [pptxgenjs](https://github.com/gitbrent/PptxGenJS/) requires Node18.
 - bundler (in this example, I used [Vite](https://v3.vitejs.dev/guide/)/React/Typescript)
 
+## About this application
+
+this application has both pptx generator and utils that helps to create pptx using pptxgenjs library.
+
+to make the code work from this code example, copy @/utils/pptx folder in your application.
+
 ## installations
 
 ### install pptxgenjs
@@ -32,6 +38,11 @@ I installed tailwindcss to reduce unnecessary styling work as well as mismatch f
 ```bash
 npm install -D tailwindcss
 ```
+
+### install [shadcn/ui](https://ui.shadcn.com/docs/installation/vite) (optional)
+
+I installed shadcn/ui for easier ui implementation including dropdown for the pptx generator functionalities.
+This is optional if you want to implement only pdf download functionality.
 
 ## run application
 

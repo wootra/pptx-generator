@@ -1,7 +1,7 @@
 import PptxGenJS from 'pptxgenjs';
 import { getNewId } from './storage';
 import { PptxComponent } from './types';
-const defaultText: PptxGenJS.TextPropsOptions = {
+export const DEFAULT_TEXT_OPT: PptxGenJS.TextPropsOptions = {
     x: 1,
     y: 0.5,
     w: 4,
@@ -10,17 +10,6 @@ const defaultText: PptxGenJS.TextPropsOptions = {
     align: 'center',
     fill: { color: 'D3E3F3' },
     color: '008899',
-};
-
-export const addText = (
-    slide: PptxGenJS.Slide,
-    text: string,
-    option?: PptxGenJS.TextPropsOptions
-) => {
-    slide.addText(text, {
-        ...defaultText,
-        ...option,
-    });
 };
 
 export type TextComponent = PptxComponent<
@@ -41,7 +30,7 @@ export const createTextObj = (
             text,
         },
         option: {
-            ...defaultText,
+            ...DEFAULT_TEXT_OPT,
             ...option,
         },
     } as TextComponent;
