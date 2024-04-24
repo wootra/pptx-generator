@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-height: 3rem;
+}
+nav {
+  height: var(--nav-height);
+}
+main {
+  min-height: calc(100vh - var(--nav-height));
+}
+input {
+  min-width: 5rem;
+}
