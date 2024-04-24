@@ -14,8 +14,7 @@ const useGeneratorUiHook = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
     const [isCopied, setIsCopied] = useState(false);
-    const { addText, addRadarChart, selected, download, code } =
-        useVisualContainer();
+    const { download } = useVisualContainer();
 
     const onDownloadClick = useCallback(() => {
         setIsDownloading(true);
@@ -41,10 +40,7 @@ const useGeneratorUiHook = () => {
         isCopied,
         setIsCopied,
         onDownloadClick,
-        addText,
-        addRadarChart,
-        selected,
-        code,
+
         isConfigShow,
         setIsConfigShow,
     };

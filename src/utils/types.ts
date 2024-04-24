@@ -1,3 +1,5 @@
+import PptxGenJS from 'pptxgenjs';
+
 export type PptxComponentType = 'text' | 'chart';
 
 export type Coords = {
@@ -19,6 +21,7 @@ export interface PptxComponentBase {
     label: string;
     data: unknown;
     option: Coords;
+    adderInSlide: (slide: PptxGenJS.Slide, layer: PptxComponentBase) => void;
 }
 
 export type VisualLayers = PptxComponentBase[];

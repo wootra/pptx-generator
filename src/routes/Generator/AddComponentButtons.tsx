@@ -1,14 +1,14 @@
-import Button from "../../ui/Button";
-import { useGeneratorUi } from "./GeneratorUiContext";
+import { useVisualContainer } from '@/context/VisualContext';
+import Button from '../../ui/Button';
 
 const AddComponentButtons = () => {
-  const { addText, addRadarChart } = useGeneratorUi();
-  return (
-    <>
-      <Button onClick={addText}>add text</Button>
-      <Button onClick={addRadarChart}>add radar chart</Button>
-    </>
-  );
+    const { addText, addRadarChart } = useVisualContainer();
+    return (
+        <>
+            <Button onClick={addText}>add text</Button>
+            <Button onClick={addRadarChart}>add radar chart</Button>
+        </>
+    );
 };
 
 export default AddComponentButtons;

@@ -1,6 +1,7 @@
 import PptxGenJS from 'pptxgenjs';
 import { getNewId } from './storage';
 import { PptxComponent } from './types';
+import { addText } from './pptx/addText';
 export const DEFAULT_TEXT_OPT: PptxGenJS.TextPropsOptions = {
     x: 1,
     y: 0.5,
@@ -32,6 +33,9 @@ export const createTextObj = (
         option: {
             ...DEFAULT_TEXT_OPT,
             ...option,
+        },
+        adderInSlide: (slide: PptxGenJS.Slide, layer: TextComponent) => {
+            addText(slide, layer.data.text, layer.option);
         },
     } as TextComponent;
 };

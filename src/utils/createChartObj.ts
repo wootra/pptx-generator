@@ -1,6 +1,7 @@
 import PptxGenJS from 'pptxgenjs';
 import { PptxComponent } from './types';
 import { getNewId } from './storage';
+import { addRadarChart } from './pptx/addChart';
 export type RadarChartType = {
     name: string; //Rigion name
     labels: string[];
@@ -33,6 +34,16 @@ export const createChartObj = (
         option: {
             ...DefaultChartRect,
             ...option,
+        },
+        adderInSlide: (slide: PptxGenJS.Slide, layer: ChartComponent) => {
+            const chartLayer = layer as ChartComponent;
+            if (chartLayer.data.chartType === 'radar') {
+                addRadarChart(
+                    slide,
+                    chartLayer.data.chartData,
+                    chartLayer.option
+                );
+            }
         },
     } as ChartComponent;
 };
