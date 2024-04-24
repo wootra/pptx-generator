@@ -43,6 +43,12 @@ in the console, type below
 npm run dev
 ```
 
+(optional) if you are on development, open another console, and type below to run tailwindcss
+
+```bash
+npm run tailwind:watch
+```
+
 and see the url and port number showing in the console.
 
 ```bash
@@ -54,7 +60,7 @@ and see the url and port number showing in the console.
 
 ```
 
-in this example, http://localhost:5173/ is where you should navigate to see the example project.
+in this example, <http://localhost:5173/> is where you should navigate to see the example project.
 
 ## open the browser with the port number
 
