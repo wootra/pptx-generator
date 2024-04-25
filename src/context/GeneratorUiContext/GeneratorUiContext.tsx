@@ -5,6 +5,7 @@ import {
     useCallback,
     useContext,
     useMemo,
+    useEffect,
 } from 'react';
 import { useVisualContainer } from '../VisualContext';
 import { useToggleSelected } from './useToggleSelected';
@@ -21,6 +22,18 @@ const useGeneratorUiHook = () => {
     const selectedLayer = useMemo(() => {
         return layers.find(l => l.id === selected);
     }, [layers, selected]);
+    useEffect(() => {
+        const keyHandler = (e: KeyboardEvent) => {
+            console.log(e.key);
+            if (e.key === 'Escape') {
+                unselect();
+            }
+        };
+        document.addEventListener('keydown', keyHandler);
+        return () => {
+            document.removeEventListener('keydown', keyHandler);
+        };
+    }, []);
 
     const onDownloadClick = useCallback(() => {
         setIsDownloading(true);

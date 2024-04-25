@@ -28,7 +28,7 @@ export const addPptxObjects = (
     slide: PptxGenJS.Slide,
     layers: VisualLayers
 ) => {
-    layers.forEach(layer => {
+    layers?.forEach(layer => {
         adderInSlide(slide, layer);
     });
 };

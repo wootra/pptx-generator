@@ -7,7 +7,7 @@ export const drawLayers = (
     layers: VisualLayers,
     selected: number | null
 ) => {
-    layers.forEach(obj => {
+    layers?.forEach(obj => {
         drawObject(ctx, obj, selected);
     });
 };

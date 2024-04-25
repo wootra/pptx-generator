@@ -1,10 +1,14 @@
-'use client';
-
-import * as React from 'react';
+import { useCallback, useState } from 'react';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover';
 import {
     Command,
     CommandEmpty,
@@ -12,33 +16,40 @@ import {
     CommandInput,
     CommandItem,
 } from '@/components/ui/command';
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from '@/components/ui/popover';
 
-export function ComboboxDemo({
+export type DropDownFieldOption<T = unknown> = { label: string; value: T };
+const DropDownField = ({
+    placeHolder = 'Nothing selected',
+    emptySearchText = 'Nothing found',
     label,
-    value,
+    selected,
     options,
     onChange,
 }: {
-    label: string;
-    value: string;
-    options: string[];
-    onChange: (val: string) => void;
-}) {
-    const [open, setOpen] = React.useState(false);
-    const setValue = React.useCallback(
+    emptySearchText?: string;
+    placeHolder?: string;
+    label?: string;
+    selected: DropDownFieldOption;
+    options: DropDownFieldOption[] | Readonly<DropDownFieldOption[]>;
+    onChange: (val: DropDownFieldOption) => void;
+}) => {
+    const [open, setOpen] = useState(false);
+    const setValue = useCallback(
         (val: string) => {
-            onChange(val);
+            console.log('selected:', val);
+            const selectedOption = options?.find(opt => opt.label === val);
+            if (selectedOption) {
+                onChange(selectedOption);
+            } else {
+                console.log('not selected anything');
+            }
         },
-        [onChange]
+        [onChange, options]
     );
+
     return (
         <div className='flex flex-row gap-2 px-2'>
-            <label>{label}</label>
+            {label && <label>{label}</label>}
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
@@ -47,38 +58,34 @@ export function ComboboxDemo({
                         aria-expanded={open}
                         className='w-[200px] justify-between'
                     >
-                        {value
-                            ? options.find(opt => opt === value)
-                            : 'Select framework...'}
+                        {selected?.label ?? placeHolder}
                         <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent className='w-[200px] p-0'>
                     <Command>
                         <CommandInput
-                            placeholder='Search framework...'
+                            placeholder={placeHolder}
                             className='h-9'
                         />
-                        <CommandEmpty>No framework found.</CommandEmpty>
+                        <CommandEmpty>{emptySearchText}</CommandEmpty>
                         <CommandGroup>
                             {options.map(opt => (
                                 <CommandItem
-                                    key={opt}
-                                    value={opt}
-                                    onSelect={currentValue => {
-                                        setValue(
-                                            currentValue === value
-                                                ? ''
-                                                : currentValue
-                                        );
+                                    key={opt.label}
+                                    // value={opt.label}
+                                    onSelect={selected => {
+                                        console.log('selected:', selected);
+                                        // if (opt && selected !== opt.label)
+                                        setValue(opt.label);
                                         setOpen(false);
                                     }}
                                 >
-                                    {opt}
+                                    {opt.label}
                                     <CheckIcon
                                         className={cn(
                                             'ml-auto h-4 w-4',
-                                            value === opt
+                                            selected.label === opt.label
                                                 ? 'opacity-100'
                                                 : 'opacity-0'
                                         )}
@@ -91,4 +98,6 @@ export function ComboboxDemo({
             </Popover>
         </div>
     );
-}
+};
+
+export default DropDownField;

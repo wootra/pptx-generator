@@ -4,36 +4,22 @@ import { drawSelected } from './drawSelected';
 import { useVisualContainer } from '@/context/VisualContext';
 import { inchToPx, pxToInch } from '../../utils/unitConverter';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
-import _ from 'lodash';
 
 const VisualCanvas = () => {
     const { layers, refreshLayers } = useVisualContainer();
-    const { selected, selectedLayer, unselect } = useGeneratorUi();
+    const { selected, selectedLayer } = useGeneratorUi();
     const ref = useRef<HTMLCanvasElement>(null);
     useEffect(() => {
-        _.debounce(() => {
-            const c = ref.current;
-            if (c) {
-                const ctx = c.getContext('2d');
-                if (!ctx) return;
-                ctx.clearRect(0, 0, 1000, 563); // width: 10" , height: 5.63"
-                drawLayers(ctx, layers, selected);
-                drawSelected(ctx, selectedLayer);
-            }
-        }, 250)();
+        const c = ref.current;
+        if (c) {
+            const ctx = c.getContext('2d');
+            if (!ctx) return;
+            ctx.clearRect(0, 0, 1000, 563); // width: 10" , height: 5.63"
+            drawLayers(ctx, layers, selected);
+            drawSelected(ctx, selectedLayer);
+        }
     }, [layers, selected, selectedLayer]);
-    useEffect(() => {
-        const keyHandler = (e: KeyboardEvent) => {
-            console.log(e.key);
-            if (e.key === 'Escape') {
-                unselect();
-            }
-        };
-        document.addEventListener('keydown', keyHandler);
-        return () => {
-            document.removeEventListener('keydown', keyHandler);
-        };
-    }, []);
+
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState<[number, number]>([0, 0]);
     return (

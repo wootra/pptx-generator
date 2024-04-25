@@ -20,14 +20,33 @@ export const createChartObj = (
         },
     } as ChartComponent;
 };
+export const getChartDefaultData = (chartType: PptxGenJS.CHART_NAME) => {
+    let data: ChartDataType | undefined;
 
-export const DefaultChartRadar: ChartDataType = {
-    chartType: 'radar',
-    chartData: [
-        {
-            name: 'Region 1',
-            labels: ['May', 'June', 'July', 'August', 'September'],
-            values: [26, 53, 100, 75, 41],
-        },
-    ],
+    switch (chartType) {
+        case 'radar':
+        case 'area':
+        case 'bar':
+        case 'bar3D':
+        case 'bubble':
+        case 'doughnut':
+        case 'line':
+        case 'pie':
+        case 'scatter':
+            data = {
+                chartType,
+                chartData: [
+                    {
+                        name: 'Region 1',
+                        labels: ['May', 'June', 'July', 'August', 'September'],
+                        values: [26, 53, 100, 75, 41],
+                    },
+                ],
+            } as ChartDataType;
+            break;
+        default:
+            console.error('Unknown chart type: ' + chartType);
+            break;
+    }
+    return data;
 };
