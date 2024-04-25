@@ -1,5 +1,5 @@
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
-import StringField from '../../ui/StringField';
+import StringField from '@/ui/StringField';
 
 const FileNameField = () => {
     const { fileName, setFileName } = useGeneratorUi();

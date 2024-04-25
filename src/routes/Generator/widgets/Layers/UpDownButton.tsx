@@ -1,5 +1,5 @@
 import React from 'react';
-import { useVisualContainer } from '../../../context/VisualContext';
+import { useVisualContainer } from '../../../../context/VisualContext';
 import { FaArrowCircleDown, FaArrowCircleUp } from 'react-icons/fa';
 
 const UpDownButton = ({

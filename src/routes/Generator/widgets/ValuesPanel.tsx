@@ -1,4 +1,4 @@
-import Values from './Values';
+import Values from '@/routes/Generator/widgets/Values';
 
 const ValuesPanel = () => {
     return (

@@ -1,7 +1,7 @@
 import { useVisualContainer } from '@/context/VisualContext';
-import ColorField from '../../../ui/ColorField';
-import NumberField from '../../../ui/NumberField';
-import StringField from '../../../ui/StringField';
+import ColorField from '../../../../ui/ColorField';
+import NumberField from '../../../../ui/NumberField';
+import StringField from '../../../../ui/StringField';
 import React from 'react';
 
 type NotEmptyType = string | number | object;

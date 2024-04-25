@@ -1,5 +1,5 @@
-import UpDownButton from './Layers/UpDownButton';
-import Layers from './Layers';
+import UpDownButton from '@/routes/Generator/widgets/Layers/UpDownButton';
+import Layers from '@/routes/Generator/widgets/Layers';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const LayersPanel = () => {

@@ -1,5 +1,5 @@
 import { PptxComponentBase, TextComponent } from '@/utils/pptx/types';
-import { coordsToPx } from '../utils/unitConverter';
+import { coordsToPx } from '../../utils/unitConverter';
 import { drawObject } from './drawObject';
 
 export const drawSelected = (

@@ -1,5 +1,5 @@
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
-import Button from '../../ui/Button';
+import Button from '@/ui/Button';
 import { FaGear } from 'react-icons/fa6';
 
 const ConfigButton = () => {

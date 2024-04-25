@@ -1,5 +1,5 @@
 import { ChartComponent } from '@/utils/pptx/types';
-import StringArea from '../../../ui/StringArea';
+import StringArea from '../../../../ui/StringArea';
 import ObjectOptions from './ObjectOptions';
 import React from 'react';
 import { useVisualContainer } from '@/context/VisualContext';

@@ -1,4 +1,4 @@
-import Button from '../../ui/Button';
+import Button from '@/ui/Button';
 import { LuPresentation } from 'react-icons/lu';
 import { FaCode } from 'react-icons/fa6';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';

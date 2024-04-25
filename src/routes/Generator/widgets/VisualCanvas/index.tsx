@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { drawLayers } from './drawLayers';
 import { drawSelected } from './drawSelected';
 import { useVisualContainer } from '@/context/VisualContext';
-import { inchToPx, pxToInch } from '../utils/unitConverter';
+import { inchToPx, pxToInch } from '../../utils/unitConverter';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
 import _ from 'lodash';
 

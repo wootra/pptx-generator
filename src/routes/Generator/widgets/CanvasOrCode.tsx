@@ -1,6 +1,6 @@
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
-import Button from '../../ui/Button';
-import VisualCanvas from './VisualCanvas';
+import Button from '@/ui/Button';
+import VisualCanvas from '@/routes/Generator/widgets/VisualCanvas';
 import { useVisualContainer } from '@/context/VisualContext';
 
 const CanvasOrCode = () => {

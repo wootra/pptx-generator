@@ -1,13 +1,13 @@
-import FileNameField from './FileNameField';
-import DownloadErrorStatusBar from './DownloadErrorStatusBar';
-import AddComponentButtons from './AddComponentButtons';
-import CanvasOrCode from './CanvasOrCode';
-import LayersPanel from './LayersPanel';
-import ValuesPanel from './ValuesPanel';
-import ConfigButton from './ConfigButton';
-import DownloadButton from './DownloadButton';
-import PreviewButton from './PreviewButton';
-import ConfigDialog from './ConfigDialog';
+import FileNameField from '@/routes/Generator/widgets/FileNameField';
+import DownloadErrorStatusBar from '@/routes/Generator/widgets/DownloadErrorStatusBar';
+import AddComponentButtons from '@/routes/Generator/widgets/AddComponentButtons';
+import CanvasOrCode from '@/routes/Generator/widgets/CanvasOrCode';
+import LayersPanel from '@/routes/Generator/widgets/LayersPanel';
+import ValuesPanel from '@/routes/Generator/widgets/ValuesPanel';
+import ConfigButton from '@/routes/Generator/widgets/ConfigButton';
+import DownloadButton from '@/routes/Generator/widgets/DownloadButton';
+import PreviewButton from '@/routes/Generator/widgets/PreviewButton';
+import ConfigDialog from '@/routes/Generator/widgets/ConfigDialog';
 import { GeneratorUiProvider } from '@/context/GeneratorUiContext';
 
 export const Generator = () => {
