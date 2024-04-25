@@ -3,6 +3,17 @@ import { getNewId } from './storage';
 import { ChartComponent, ChartDataType } from '@/utils/pptx/types';
 
 const DefaultChartRect: PptxGenJS.IChartOpts = { x: 1, y: 1.9, w: 8, h: 3 };
+export const chartTypes: PptxGenJS.CHART_NAME[] = [
+    'area',
+    'bar',
+    'bar3D',
+    'bubble',
+    'doughnut',
+    'line',
+    'pie',
+    'radar',
+    'scatter',
+];
 
 export const createChartObj = (
     chartData: ChartDataType,

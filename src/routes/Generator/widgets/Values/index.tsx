@@ -27,7 +27,6 @@ const render = (selectedLayer: PptxComponentBase) => {
 const Values = () => {
     const { refreshLayers } = useVisualContainer();
     const { selectedLayer } = useGeneratorUi();
-    console.log('selectedLayer:', selectedLayer);
 
     if (!selectedLayer)
         return (

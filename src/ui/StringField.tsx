@@ -17,7 +17,7 @@ const StringField = ({
         [onChange]
     );
     if (typeof value === 'object') {
-        console.log('it is not string:', label, value);
+        console.error('it is not string:', label, value);
     }
     return (
         <div className='flex flex-row gap-2 px-2'>

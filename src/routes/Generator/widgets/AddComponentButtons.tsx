@@ -1,40 +1,24 @@
 import { useVisualContainer } from '@/context/VisualContext';
 import Button from '@/ui/Button';
-import DropDownField, { DropDownFieldOption } from '@/ui/DropDownField';
+import DropDownField from '@/ui/DropDownField';
 import { useState } from 'react';
 import PptxGenJS from 'pptxgenjs';
 import { FaRegPlusSquare } from 'react-icons/fa';
+import { chartTypes } from '../utils/createChartObj';
 
-const chartTypes: DropDownFieldOption<PptxGenJS.CHART_NAME>[] = [
-    { label: 'area', value: 'area' },
-    { label: 'bar', value: 'bar' },
-    { label: 'bar3D', value: 'bar3D' },
-    { label: 'bubble', value: 'bubble' },
-    { label: 'doughnut', value: 'doughnut' },
-    { label: 'line', value: 'line' },
-    { label: 'pie', value: 'pie' },
-    { label: 'radar', value: 'radar' },
-    { label: 'scatter', value: 'scatter' },
-];
 const AddChartButton = () => {
     const { addChart } = useVisualContainer();
-    const [selectedChart, setSelectedChart] = useState<
-        DropDownFieldOption<PptxGenJS.CHART_NAME>
-    >({
-        label: 'bar',
-        value: 'bar',
-    });
+    const [selectedChart, setSelectedChart] =
+        useState<PptxGenJS.CHART_NAME>('bar');
 
     return (
         <div className='flex flex-row'>
             <DropDownField
-                selected={
-                    selectedChart as DropDownFieldOption<PptxGenJS.CHART_NAME>
-                }
-                onChange={setSelectedChart as (v: DropDownFieldOption) => void}
+                selected={selectedChart as string}
+                onChange={setSelectedChart as (v: string) => void}
                 options={chartTypes}
             />
-            <Button onClick={() => addChart(selectedChart.value)}>
+            <Button onClick={() => addChart(selectedChart)}>
                 <FaRegPlusSquare />
             </Button>
         </div>

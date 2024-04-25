@@ -17,7 +17,6 @@ import {
     CommandItem,
 } from '@/components/ui/command';
 
-export type DropDownFieldOption<T = unknown> = { label: string; value: T };
 const DropDownField = ({
     placeHolder = 'Nothing selected',
     emptySearchText = 'Nothing found',
@@ -29,19 +28,18 @@ const DropDownField = ({
     emptySearchText?: string;
     placeHolder?: string;
     label?: string;
-    selected: DropDownFieldOption;
-    options: DropDownFieldOption[] | Readonly<DropDownFieldOption[]>;
-    onChange: (val: DropDownFieldOption) => void;
+    selected: string;
+    options: string[] | Readonly<string[]>;
+    onChange: (val: string) => void;
 }) => {
     const [open, setOpen] = useState(false);
     const setValue = useCallback(
         (val: string) => {
-            console.log('selected:', val);
-            const selectedOption = options?.find(opt => opt.label === val);
+            const selectedOption = options?.find(opt => opt === val);
             if (selectedOption) {
                 onChange(selectedOption);
             } else {
-                console.log('not selected anything');
+                console.error('not selected anything');
             }
         },
         [onChange, options]
@@ -58,7 +56,7 @@ const DropDownField = ({
                         aria-expanded={open}
                         className='w-[200px] justify-between'
                     >
-                        {selected?.label ?? placeHolder}
+                        {selected ?? placeHolder}
                         <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                     </Button>
                 </PopoverTrigger>
@@ -72,20 +70,18 @@ const DropDownField = ({
                         <CommandGroup>
                             {options.map(opt => (
                                 <CommandItem
-                                    key={opt.label}
-                                    // value={opt.label}
+                                    key={opt}
                                     onSelect={selected => {
-                                        console.log('selected:', selected);
-                                        // if (opt && selected !== opt.label)
-                                        setValue(opt.label);
+                                        if (opt && selected !== opt)
+                                            setValue(opt);
                                         setOpen(false);
                                     }}
                                 >
-                                    {opt.label}
+                                    {opt}
                                     <CheckIcon
                                         className={cn(
                                             'ml-auto h-4 w-4',
-                                            selected.label === opt.label
+                                            selected === opt
                                                 ? 'opacity-100'
                                                 : 'opacity-0'
                                         )}

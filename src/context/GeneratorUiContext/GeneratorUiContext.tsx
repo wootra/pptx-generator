@@ -24,7 +24,6 @@ const useGeneratorUiHook = () => {
     }, [layers, selected]);
     useEffect(() => {
         const keyHandler = (e: KeyboardEvent) => {
-            console.log(e.key);
             if (e.key === 'Escape') {
                 unselect();
             }
