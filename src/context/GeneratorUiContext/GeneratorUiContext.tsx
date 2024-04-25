@@ -17,7 +17,7 @@ const useGeneratorUiHook = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
     const [isCopied, setIsCopied] = useState(false);
-    const { selected, toggleSelected } = useToggleSelected();
+    const { selected, toggleSelected, unselect } = useToggleSelected();
     const selectedLayer = useMemo(() => {
         return layers.find(l => l.id === selected);
     }, [layers, selected]);
@@ -49,6 +49,7 @@ const useGeneratorUiHook = () => {
         isConfigShow,
         setIsConfigShow,
         selected,
+        unselect,
         toggleSelected,
         selectedLayer,
     };

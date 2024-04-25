@@ -20,7 +20,7 @@ const Layers = () => {
                     key={layer.id}
                 >
                     <button
-                        className='flex-grow text-left'
+                        className='flex-grow text-left select-none'
                         onClick={() => toggleSelected(layer.id)}
                     >
                         {layer.id}:{layer.label}
