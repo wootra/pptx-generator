@@ -1,4 +1,3 @@
-import { GeneratorUiProvider } from './GeneratorUiContext';
 import FileNameField from './FileNameField';
 import DownloadErrorStatusBar from './DownloadErrorStatusBar';
 import AddComponentButtons from './AddComponentButtons';
@@ -9,6 +8,7 @@ import ConfigButton from './ConfigButton';
 import DownloadButton from './DownloadButton';
 import PreviewButton from './PreviewButton';
 import ConfigDialog from './ConfigDialog';
+import { GeneratorUiProvider } from '@/context/GeneratorUiContext';
 
 export const Generator = () => {
     return (

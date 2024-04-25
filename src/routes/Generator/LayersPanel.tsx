@@ -1,6 +1,6 @@
-import { useGeneratorUi } from './GeneratorUiContext';
 import UpDownButton from './Layers/UpDownButton';
 import Layers from './Layers';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const LayersPanel = () => {
     const { selected } = useGeneratorUi();

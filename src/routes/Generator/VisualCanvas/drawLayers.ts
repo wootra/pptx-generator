@@ -1,10 +1,12 @@
-import { coordsToPx } from '@/utils/unitConverter';
-import { VisualLayers } from '@/utils/types';
+import {
+    ChartComponent,
+    TextComponent,
+    VisualLayers,
+} from '@/utils/pptx/types';
 import { fillRect } from './canvas-utils/fillRect';
 import { strokeRect } from './canvas-utils/strokeRect';
 import { setTextDefaultStyles } from './setTextDefaultStyles';
-import { TextComponent } from '@/utils/createTextObj';
-import { ChartComponent } from '@/utils/createChartObj';
+import { coordsToPx } from '../utils/unitConverter';
 
 export const drawLayers = (
     ctx: CanvasRenderingContext2D,

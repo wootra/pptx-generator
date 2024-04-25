@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { VisualLayers } from '../utils/types';
 import { generateFile, generateSlide } from '@/utils/pptx/generatePptx';
-import { addPptxObjects } from '@/utils/addPptxObjects';
+import { VisualLayers } from '@/utils/pptx/types';
+import { addPptxObjects } from '@/utils/pptx/addPptxObjects';
 
 export const useDownload = (layers: VisualLayers) => {
     return useCallback(

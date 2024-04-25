@@ -1,5 +1,5 @@
+import { VisualLayers } from '@/utils/pptx/types';
 import { useMemo } from 'react';
-import { VisualLayers } from '../utils/types';
 
 export const useCode = (layers: VisualLayers) => {
     return useMemo(() => {

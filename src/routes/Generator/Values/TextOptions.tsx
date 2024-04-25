@@ -1,5 +1,5 @@
-import { TextComponent } from '@/utils/createTextObj';
-import StringField from '../../../ui/StringField';
+import { TextComponent } from '@/utils/pptx/types';
+import StringField from '@/ui/StringField';
 import ObjectOptions from './ObjectOptions';
 import React from 'react';
 import { useVisualContainer } from '@/context/VisualContext';

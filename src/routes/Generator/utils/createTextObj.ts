@@ -1,7 +1,7 @@
 import PptxGenJS from 'pptxgenjs';
 import { getNewId } from './storage';
-import { PptxComponent } from './types';
-import { addText } from './pptx/addText';
+import { TextComponent } from '@/utils/pptx/types';
+
 export const DEFAULT_TEXT_OPT: PptxGenJS.TextPropsOptions = {
     x: 1,
     y: 0.5,
@@ -12,11 +12,6 @@ export const DEFAULT_TEXT_OPT: PptxGenJS.TextPropsOptions = {
     fill: { color: 'D3E3F3' },
     color: '008899',
 };
-
-export type TextComponent = PptxComponent<
-    { text: string },
-    PptxGenJS.TextBaseProps & Record<string, string | number>
->;
 
 export const createTextObj = (
     text: string,
@@ -33,9 +28,6 @@ export const createTextObj = (
         option: {
             ...DEFAULT_TEXT_OPT,
             ...option,
-        },
-        adderInSlide: (slide: PptxGenJS.Slide, layer: TextComponent) => {
-            addText(slide, layer.data.text, layer.option);
         },
     } as TextComponent;
 };

@@ -1,11 +1,12 @@
 import classNames from 'classnames';
-import { useVisualContainer } from '../../../context/VisualContext';
 import { IoIosCloseCircle } from 'react-icons/io';
 import UpDownButton from './UpDownButton';
+import { useVisualContainer } from '@/context/VisualContext';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const Layers = () => {
-    const { layers, deleteLayer, toggleSelected, selected } =
-        useVisualContainer();
+    const { layers, deleteLayer } = useVisualContainer();
+    const { toggleSelected, selected } = useGeneratorUi();
     return (
         <ul>
             {layers.map(layer => (

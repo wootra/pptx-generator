@@ -4,17 +4,23 @@ import {
     PropsWithChildren,
     useCallback,
     useContext,
+    useMemo,
 } from 'react';
-import { useVisualContainer } from '../../context/VisualContext';
+import { useVisualContainer } from '../VisualContext';
+import { useToggleSelected } from './useToggleSelected';
 
 const useGeneratorUiHook = () => {
+    const { download, layers } = useVisualContainer();
     const [isCode, setIsCode] = useState(false);
     const [isConfigShow, setIsConfigShow] = useState(false);
     const [fileName, setFileName] = useState('pptxgen-untitled');
     const [isDownloading, setIsDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
     const [isCopied, setIsCopied] = useState(false);
-    const { download } = useVisualContainer();
+    const { selected, toggleSelected } = useToggleSelected();
+    const selectedLayer = useMemo(() => {
+        return layers.find(l => l.id === selected);
+    }, [layers, selected]);
 
     const onDownloadClick = useCallback(() => {
         setIsDownloading(true);
@@ -40,9 +46,11 @@ const useGeneratorUiHook = () => {
         isCopied,
         setIsCopied,
         onDownloadClick,
-
         isConfigShow,
         setIsConfigShow,
+        selected,
+        toggleSelected,
+        selectedLayer,
     };
 };
 

@@ -1,7 +1,7 @@
 import Button from '../../ui/Button';
-import { useGeneratorUi } from './GeneratorUiContext';
 import { LuPresentation } from 'react-icons/lu';
 import { FaCode } from 'react-icons/fa6';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const PreviewButton = () => {
     const { isCode, setIsCode } = useGeneratorUi();

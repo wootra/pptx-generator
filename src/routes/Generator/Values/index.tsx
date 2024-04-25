@@ -1,12 +1,15 @@
-import { useVisualContainer } from '@/context/VisualContext';
 import TextOptions from './TextOptions';
 import ChartOptions from './ChartOptions';
 import NumberField from '@/ui/NumberField';
-import { PptxComponentBase } from '@/utils/types';
 import React from 'react';
 import StringField from '@/ui/StringField';
-import { TextComponent } from '@/utils/createTextObj';
-import { ChartComponent } from '@/utils/createChartObj';
+import {
+    ChartComponent,
+    PptxComponentBase,
+    TextComponent,
+} from '@/utils/pptx/types';
+import { useVisualContainer } from '@/context/VisualContext';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 const render = (selectedLayer: PptxComponentBase) => {
     switch (selectedLayer.type) {
         case 'text':
@@ -22,7 +25,8 @@ const render = (selectedLayer: PptxComponentBase) => {
     }
 };
 const Values = () => {
-    const { selectedLayer, refreshLayers } = useVisualContainer();
+    const { refreshLayers } = useVisualContainer();
+    const { selectedLayer } = useGeneratorUi();
     console.log('selected:', selectedLayer);
 
     if (!selectedLayer)

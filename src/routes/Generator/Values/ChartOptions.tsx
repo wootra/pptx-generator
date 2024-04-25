@@ -1,13 +1,13 @@
-import { ChartComponent } from '@/utils/createChartObj';
+import { ChartComponent } from '@/utils/pptx/types';
 import StringArea from '../../../ui/StringArea';
 import ObjectOptions from './ObjectOptions';
-import { useVisualContainer } from '@/context/VisualContext';
 import React from 'react';
+import { useVisualContainer } from '@/context/VisualContext';
 
 const ChartOptions = ({ selectedLayer }: { selectedLayer: ChartComponent }) => {
     const { refreshLayers } = useVisualContainer();
     return (
-        <ul className='gap-1 flex flex-col gap-1'>
+        <ul className='gap-1 flex flex-col'>
             <li>
                 <StringArea
                     label='text'

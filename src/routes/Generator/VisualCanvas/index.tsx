@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { useVisualContainer } from '../../../context/VisualContext';
 import { drawLayers } from './drawLayers';
 import { drawSelected } from './drawSelected';
-import { inchToPx, pxToInch } from '../../../utils/unitConverter';
+import { useVisualContainer } from '@/context/VisualContext';
+import { inchToPx, pxToInch } from '../utils/unitConverter';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const VisualCanvas = () => {
-    const { layers, selected, selectedLayer, refreshLayers } =
-        useVisualContainer();
+    const { layers, refreshLayers } = useVisualContainer();
+    const { selected, selectedLayer } = useGeneratorUi();
     const ref = useRef<HTMLCanvasElement>(null);
     useEffect(() => {
         const c = ref.current;

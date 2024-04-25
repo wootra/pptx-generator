@@ -1,4 +1,4 @@
-import { useGeneratorUi } from './GeneratorUiContext';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 import { IoMdClose } from 'react-icons/io';
 
 const ConfigDialog = () => {

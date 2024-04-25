@@ -21,7 +21,6 @@ export interface PptxComponentBase {
     label: string;
     data: unknown;
     option: Coords;
-    adderInSlide: (slide: PptxGenJS.Slide, layer: PptxComponentBase) => void;
 }
 
 export type VisualLayers = PptxComponentBase[];
@@ -31,3 +30,20 @@ export interface PptxComponent<T extends object, A extends object>
     data: T;
     option: A & Coords & Fill & Record<string, number | string>;
 }
+export type RadarChartType = {
+    name: string; //Rigion name
+    labels: string[];
+    values: number[];
+};
+
+export type ChartDataType = {
+    chartType: PptxGenJS.CHART_NAME;
+    chartData: RadarChartType[];
+};
+
+export type ChartComponent = PptxComponent<ChartDataType, PptxGenJS.IChartOpts>;
+
+export type TextComponent = PptxComponent<
+    { text: string },
+    PptxGenJS.TextBaseProps & Record<string, string | number>
+>;

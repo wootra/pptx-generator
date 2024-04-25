@@ -1,33 +1,36 @@
-import { PropsWithChildren, createContext, useContext, useMemo } from 'react';
+import {
+    PropsWithChildren,
+    createContext,
+    useCallback,
+    useContext,
+    useState,
+} from 'react';
 
 import { useCode } from './useCode';
-import { useLayers } from './useLayers';
 import { useAddNewLayers } from './useAddNewLayers';
 import { useMoveUpDown } from './useMoveUpDown';
-import { useToggleSelected } from './useToggleSelected';
 import { useDownload } from './useDownload';
+import { VisualLayers } from '@/utils/pptx/types';
 
 const useVisualContextGetSet = () => {
-    const { layers, setLayers, deleteLayer, refreshLayers } = useLayers();
+    const [layers, setLayers] = useState([] as VisualLayers);
+    const refreshLayers = useCallback(() => {
+        setLayers(l => [...l]);
+    }, []);
+    const deleteLayer = useCallback((id: number) => {
+        setLayers(l => l.filter(layer => layer.id !== id));
+    }, []);
     const addNewLayersObj = useAddNewLayers(setLayers);
 
     const { moveUp, moveDown } = useMoveUpDown(setLayers);
-    const { selected, toggleSelected } = useToggleSelected();
-    const selectedLayer = useMemo(() => {
-        return layers.find(layer => layer.id === selected);
-    }, [layers, selected]);
 
     const download = useDownload(layers);
-
     const code = useCode(layers);
 
     return {
         layers,
         ...addNewLayersObj,
         deleteLayer,
-        selected,
-        selectedLayer,
-        toggleSelected,
         refreshLayers,
         moveUp,
         moveDown,
