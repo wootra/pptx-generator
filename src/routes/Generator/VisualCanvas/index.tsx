@@ -4,20 +4,27 @@ import { drawSelected } from './drawSelected';
 import { useVisualContainer } from '@/context/VisualContext';
 import { inchToPx, pxToInch } from '../utils/unitConverter';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
+import _ from 'lodash';
 
 const VisualCanvas = () => {
     const { layers, refreshLayers } = useVisualContainer();
     const { selected, selectedLayer } = useGeneratorUi();
     const ref = useRef<HTMLCanvasElement>(null);
     useEffect(() => {
-        const c = ref.current;
-        if (c) {
-            const ctx = c.getContext('2d');
-            if (!ctx) return;
-            ctx.clearRect(0, 0, 1000, 563); // width: 10" , height: 5.63"
-            drawLayers(ctx, layers, selected);
-            drawSelected(ctx, selectedLayer);
-        }
+        _.debounce(
+            () => {
+                const c = ref.current;
+                if (c) {
+                    const ctx = c.getContext('2d');
+                    if (!ctx) return;
+                    ctx.clearRect(0, 0, 1000, 563); // width: 10" , height: 5.63"
+                    drawLayers(ctx, layers, selected);
+                    drawSelected(ctx, selectedLayer);
+                }
+            },
+            2000,
+            { leading: true, trailing: true, maxWait: 100 }
+        );
     }, [layers, selected, selectedLayer]);
 
     const [isDragging, setIsDragging] = useState(false);
