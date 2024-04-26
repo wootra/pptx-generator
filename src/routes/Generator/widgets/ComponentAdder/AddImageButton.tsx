@@ -10,8 +10,17 @@ const AddImageButton = () => {
     return (
         <div className='flex flex-row items-center w-full'>
             <ImageField
-                label={<RiImage2Fill className='w-8 h-8 flex-none' />}
+                label={
+                    !selectedImage ? (
+                        <div>
+                            <RiImage2Fill className='w-8 h-8 flex-none' />
+                        </div>
+                    ) : (
+                        <div className='flex-1'>change image</div>
+                    )
+                }
                 value={selectedImage}
+                showSelected={!!selectedImage}
                 onChange={text => {
                     setSelectedImage(text);
                 }}

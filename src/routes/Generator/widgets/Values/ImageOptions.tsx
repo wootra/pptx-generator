@@ -12,6 +12,7 @@ const ImageOptions = ({ selectedLayer }: { selectedLayer: ImageComponent }) => {
                 <ImageField
                     label='src'
                     value={selectedLayer.data.src}
+                    showSelected
                     onChange={text => {
                         selectedLayer.data.src = text;
                         refreshLayers();

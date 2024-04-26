@@ -24,9 +24,11 @@ const ImageField = ({
     label,
     value,
     onChange,
+    showSelected,
 }: {
     label?: ReactNode;
     value: string;
+    showSelected?: boolean;
     onChange: (val: string) => void;
 }) => {
     const onReadFile: React.ChangeEventHandler<HTMLInputElement> = useCallback(
@@ -40,16 +42,16 @@ const ImageField = ({
     }
 
     return (
-        <div className='flex flex-row gap-2 relative flex-1'>
-            {label && <label>{label}</label>}
+        <label className='flex flex-row gap-2 relative flex-1'>
+            {typeof label === 'string' ? <span>{label}</span> : label}
             <input
                 type='file'
-                className='flex-grow flex-shrink min-w-0 w-0'
+                className='hidden'
                 accept='.gif,.jpg,.jpeg,.png,.webp'
                 onChange={onReadFile}
             />
-            {value && <img src={value} className='w-8 h-8' />}
-        </div>
+            {value && showSelected && <img src={value} className='w-8 h-8' />}
+        </label>
     );
 };
 
