@@ -69,13 +69,11 @@ const ObjectOptions = ({
         }
     };
     return (
-        <div className={groupName && 'pl-2 flex flex-col gap-1'}>
+        <div className={groupName && 'flex flex-col gap-1'}>
             {groupName && (
-                <h3 className='bg-slate-800 text-slate-200 px-2'>
-                    {groupName}
-                </h3>
+                <h3 className='bg-slate-800 text-slate-200'>{groupName}</h3>
             )}
-            <ul className='flex flex-col gap-1'>
+            <ul className='flex flex-col gap-1 pl-2'>
                 {Object.keys(obj).map(key => {
                     return <li key={key}>{render(obj, key)}</li>;
                 })}

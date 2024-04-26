@@ -8,15 +8,18 @@ const AddImageButton = () => {
     const { addImage } = useGeneratorUi();
     const [selectedImage, setSelectedImage] = useState('');
     return (
-        <div className='flex flex-row items-center flex-shrink flex-grow-0'>
-            <RiImage2Fill className='w-8 h-8' />
+        <div className='flex flex-row items-center w-full'>
             <ImageField
+                label={<RiImage2Fill className='w-8 h-8 flex-none' />}
                 value={selectedImage}
                 onChange={text => {
                     setSelectedImage(text);
                 }}
             />
-            <Button onClick={() => addImage(selectedImage)}>
+            <Button
+                onClick={() => addImage(selectedImage)}
+                className='flex-none'
+            >
                 <FaRegPlusSquare />
             </Button>
         </div>

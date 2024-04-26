@@ -53,7 +53,7 @@ const NumberField = ({
         ? { onChange: onChangeCb, onBlur: onBlurCb }
         : { disabled: true };
     return (
-        <div className='flex flex-row gap-2 px-2'>
+        <div className='flex flex-row gap-2'>
             {label && <label>{label}</label>}
             <input
                 className='flex-grow'

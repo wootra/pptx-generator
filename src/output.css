@@ -796,6 +796,19 @@ body {
   width: 13rem;
 }
 
+.w-auto {
+  width: auto;
+}
+
+.w-0 {
+  width: 0px;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .min-w-\[50vw\] {
   min-width: 50vw;
 }

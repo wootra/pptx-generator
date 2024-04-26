@@ -23,7 +23,7 @@ const StringArea = ({
         return <div className='text-red-600'>{label}:error</div>;
     }
     return (
-        <div className='flex flex-row gap-2 px-2'>
+        <div className='flex flex-row gap-2'>
             {label && <label>{label}</label>}
             <textarea
                 className='flex-grow'

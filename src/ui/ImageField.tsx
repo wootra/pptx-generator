@@ -40,11 +40,11 @@ const ImageField = ({
     }
 
     return (
-        <div className='flex flex-row gap-2 px-2 relative'>
+        <div className='flex flex-row gap-2 relative flex-1'>
             {label && <label>{label}</label>}
             <input
                 type='file'
-                className='flex-grow flex-shrink'
+                className='flex-grow flex-shrink min-w-0 w-0'
                 accept='.gif,.jpg,.jpeg,.png,.webp'
                 onChange={onReadFile}
             />

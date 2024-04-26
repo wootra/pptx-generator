@@ -47,7 +47,7 @@ const DropDownField = ({
     );
 
     return (
-        <div className='flex flex-row gap-2 px-2 w-full'>
+        <div className='flex flex-row gap-2 w-full'>
             {label && <label>{label}</label>}
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
