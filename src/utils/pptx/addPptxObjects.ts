@@ -1,6 +1,7 @@
 import PptxGenJS from 'pptxgenjs';
 import {
     ChartComponent,
+    ImageComponent,
     PptxComponentBase,
     TextComponent,
     VisualLayers,
@@ -19,6 +20,13 @@ const adderInSlide = (slide: PptxGenJS.Slide, layer: PptxComponentBase) => {
             const textLayer = layer as TextComponent;
             slide.addText(textLayer.data.text, {
                 ...textLayer.option,
+            });
+            break;
+        case 'image':
+            const imgLayer = layer as ImageComponent;
+            slide.addImage({
+                path: imgLayer.data.src,
+                ...imgLayer.option,
             });
             break;
     }

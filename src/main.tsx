@@ -6,8 +6,8 @@ import {
     RouterProvider,
     createBrowserRouter,
 } from 'react-router-dom';
-import './output.css';
 import './common.css';
+import './output.css';
 import { ErrorBoundary, ROUTES } from './routes/router';
 import App from './App';
 

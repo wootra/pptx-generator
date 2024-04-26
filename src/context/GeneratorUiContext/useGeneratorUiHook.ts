@@ -15,6 +15,12 @@ export const useGeneratorUiHook = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
     const [isCopied, setIsCopied] = useState(false);
+    const setCopied = useCallback(() => {
+        setIsCopied(true);
+        setTimeout(() => {
+            setIsCopied(false);
+        }, 3000);
+    }, []);
     const { selected, toggleSelected, unselect, setSelected } =
         useToggleSelected();
     const addNewLayersObj = useAddNewLayers(setLayers, setSelected);
@@ -55,7 +61,7 @@ export const useGeneratorUiHook = () => {
         downloadError,
         setDownloadError,
         isCopied,
-        setIsCopied,
+        setCopied,
         onDownloadClick,
         isConfigShow,
         setIsConfigShow,

@@ -5,6 +5,7 @@ import PptxGenJS from 'pptxgenjs';
 import { FaRegPlusSquare } from 'react-icons/fa';
 import { chartTypes } from '@/routes/Generator/utils/createChartObj';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
+import { FcDoughnutChart } from 'react-icons/fc';
 
 const AddChartButton = () => {
     const { addChart } = useGeneratorUi();
@@ -12,7 +13,8 @@ const AddChartButton = () => {
         useState<PptxGenJS.CHART_NAME>('bar');
 
     return (
-        <div className='flex flex-row'>
+        <div className='flex flex-row items-center'>
+            <FcDoughnutChart className='w-8 h-8' />
             <DropDownField
                 selected={selectedChart as string}
                 onChange={setSelectedChart as (v: string) => void}

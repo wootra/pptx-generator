@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 
 const StringArea = ({
     label,
@@ -6,12 +6,11 @@ const StringArea = ({
     rows = 3,
     onChange,
 }: {
-    label?: string;
+    label?: ReactNode;
     value: string;
     rows?: number;
     onChange: (val: string) => void;
 }) => {
-    const ref = useRef<HTMLTextAreaElement>(null);
     const onChangeCb: React.ChangeEventHandler<HTMLTextAreaElement> =
         useCallback(
             e => {
@@ -28,7 +27,6 @@ const StringArea = ({
             {label && <label>{label}</label>}
             <textarea
                 className='flex-grow'
-                ref={ref}
                 value={value}
                 onChange={onChangeCb}
                 rows={rows}

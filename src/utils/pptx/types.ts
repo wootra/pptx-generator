@@ -1,6 +1,6 @@
 import PptxGenJS from 'pptxgenjs';
 
-export type PptxComponentType = 'text' | 'chart';
+export type PptxComponentType = 'text' | 'chart' | 'image';
 
 export type Coords = {
     x: number;
@@ -46,4 +46,9 @@ export type ChartComponent = PptxComponent<ChartDataType, PptxGenJS.IChartOpts>;
 export type TextComponent = PptxComponent<
     { text: string },
     PptxGenJS.TextBaseProps & Record<string, string | number>
+>;
+
+export type ImageComponent = PptxComponent<
+    { src: string },
+    PptxGenJS.ImageProps & Record<string, string | number>
 >;

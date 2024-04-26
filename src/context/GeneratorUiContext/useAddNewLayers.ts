@@ -6,6 +6,7 @@ import { createTextObj } from '@/routes/Generator/utils/createTextObj';
 import { PptxComponentBase, VisualLayers } from '@/utils/pptx/types';
 import { useCallback } from 'react';
 import PptxGenJS from 'pptxgenjs';
+import { createImageObj } from '@/routes/Generator/utils/createImageObj';
 
 export const useAddNewLayers = (
     setLayers: React.Dispatch<React.SetStateAction<VisualLayers>>,
@@ -29,6 +30,19 @@ export const useAddNewLayers = (
             })
         );
     }, [addNewLayer]);
+    const addImage = useCallback(
+        (image: string = '') => {
+            addNewLayer(
+                createImageObj(image, {
+                    x: 1,
+                    y: 0.5,
+                    w: 8,
+                    h: 1,
+                })
+            );
+        },
+        [addNewLayer]
+    );
 
     const addChart = useCallback(
         (chartType: PptxGenJS.CHART_NAME) => {
@@ -48,5 +62,5 @@ export const useAddNewLayers = (
         [addNewLayer]
     );
 
-    return { addText, addChart };
+    return { addText, addImage, addChart };
 };

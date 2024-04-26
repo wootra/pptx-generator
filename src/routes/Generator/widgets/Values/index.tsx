@@ -5,23 +5,29 @@ import React from 'react';
 import StringField from '@/ui/StringField';
 import {
     ChartComponent,
+    ImageComponent,
     PptxComponentBase,
     TextComponent,
 } from '@/utils/pptx/types';
 import { useVisualContainer } from '@/context/VisualContext';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
+import ImageOptions from './ImageOptions';
 const render = (selectedLayer: PptxComponentBase) => {
     switch (selectedLayer.type) {
         case 'text':
             return (
                 <TextOptions selectedLayer={selectedLayer as TextComponent} />
             );
+        case 'image':
+            return (
+                <ImageOptions selectedLayer={selectedLayer as ImageComponent} />
+            );
         case 'chart':
             return (
                 <ChartOptions selectedLayer={selectedLayer as ChartComponent} />
             );
         default:
-            return <div>Values</div>;
+            return <div>Unandled Values: {selectedLayer.type}</div>;
     }
 };
 const Values = () => {

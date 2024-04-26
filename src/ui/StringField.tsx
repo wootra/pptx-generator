@@ -1,15 +1,14 @@
-import React, { useCallback, useRef } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 
 const StringField = ({
     label,
     value,
     onChange,
 }: {
-    label?: string;
+    label?: ReactNode;
     value: string;
     onChange: (val: string) => void;
 }) => {
-    const ref = useRef<HTMLInputElement>(null);
     const onChangeCb: React.ChangeEventHandler<HTMLInputElement> = useCallback(
         e => {
             onChange(e.target.value);
@@ -24,7 +23,6 @@ const StringField = ({
             {label && <label>{label}</label>}
             <input
                 className='flex-grow'
-                ref={ref}
                 defaultValue={value}
                 onChange={onChangeCb}
             />

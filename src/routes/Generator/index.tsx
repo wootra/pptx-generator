@@ -30,7 +30,7 @@ export const Generator = () => {
                 </h1>
                 <DownloadErrorStatusBar />
                 <div className='flex flex-row w-full h-[calc(100%-5rem)] flex-grow-0 flex-shrink'>
-                    <div className='basis-52 flex-none bg-slate-200'>
+                    <div className='basis-52 flex-none bg-slate-200 w-52'>
                         <ul className=' flex flex-col gap-2 p-4'>
                             <ComponentAdder />
                         </ul>

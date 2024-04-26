@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
 
 import { cn } from '@/lib/utils';
@@ -28,7 +28,7 @@ const DropDownField = ({
 }: {
     emptySearchText?: string;
     placeHolder?: string;
-    label?: string;
+    label?: ReactNode;
     selected: string;
     options: string[] | Readonly<string[]>;
     onChange: (val: string) => void;
@@ -47,7 +47,7 @@ const DropDownField = ({
     );
 
     return (
-        <div className='flex flex-row gap-2 px-2'>
+        <div className='flex flex-row gap-2 px-2 w-full'>
             {label && <label>{label}</label>}
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
@@ -55,7 +55,7 @@ const DropDownField = ({
                         variant='outline'
                         role='combobox'
                         aria-expanded={open}
-                        className='w-[200px] justify-between'
+                        className='flex-1 justify-between'
                     >
                         {selected ?? placeHolder}
                         <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />

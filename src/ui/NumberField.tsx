@@ -12,7 +12,7 @@ const NumberField = ({
     onChange,
     unit,
 }: {
-    label?: string;
+    label?: ReactNode;
     value: number;
     onChange?: (val: number) => void;
     unit?: ReactNode;

@@ -1,11 +1,16 @@
-import React, { InputHTMLAttributes, useCallback, useRef } from 'react';
+import React, {
+    InputHTMLAttributes,
+    ReactNode,
+    useCallback,
+    useRef,
+} from 'react';
 
 const ColorField = ({
     label,
     value,
     onChange,
 }: {
-    label?: string;
+    label?: ReactNode;
     value: string;
     onChange?: (val: string) => void;
 }) => {
