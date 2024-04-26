@@ -24,10 +24,12 @@ const adderInSlide = (slide: PptxGenJS.Slide, layer: PptxComponentBase) => {
             break;
         case 'image':
             const imgLayer = layer as ImageComponent;
-            slide.addImage({
-                path: imgLayer.data.src,
-                ...imgLayer.option,
-            });
+            if (imgLayer.data.src) {
+                slide.addImage({
+                    ...imgLayer.option,
+                    path: imgLayer.data.src,
+                });
+            }
             break;
     }
 };

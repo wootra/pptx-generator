@@ -68,6 +68,9 @@ const ObjectOptions = ({
             );
         }
     };
+    if (typeof obj !== 'object') {
+        return null;
+    }
     return (
         <div className={groupName && 'flex flex-col gap-1'}>
             {groupName && (

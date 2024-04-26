@@ -8,7 +8,14 @@ import { fillRect } from '@/routes/Generator/widgets/VisualCanvas/canvas-utils/f
 import { strokeRect } from './canvas-utils/strokeRect';
 import { setTextDefaultStyles } from './setTextDefaultStyles';
 import { coordsToPx } from '@/routes/Generator/utils/unitConverter';
+
 const cachedImg: Record<number, HTMLImageElement> = {};
+export const deleteObjectCache = (id: number) => {
+    if (cachedImg[id]) {
+        delete cachedImg[id];
+    }
+};
+
 export const drawObject = (
     ctx: CanvasRenderingContext2D,
     obj: PptxComponentBase,
