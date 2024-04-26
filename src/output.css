@@ -598,6 +598,10 @@ body {
   border-width: 0;
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .fixed {
   position: fixed;
 }
@@ -997,6 +1001,10 @@ body {
   border-radius: calc(var(--radius) - 4px);
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1093,6 +1101,10 @@ body {
 
 .bg-secondary {
   background-color: hsl(var(--secondary));
+}
+
+.bg-accent {
+  background-color: hsl(var(--accent));
 }
 
 .fill-current {
@@ -1307,6 +1319,10 @@ body {
 
 .text-destructive {
   color: hsl(var(--destructive));
+}
+
+.text-accent-foreground {
+  color: hsl(var(--accent-foreground));
 }
 
 .underline-offset-4 {
@@ -1536,7 +1552,19 @@ body {
   color: hsl(var(--accent-foreground));
 }
 
+.aria-\[selected\=\'true\'\]\:bg-accent[aria-selected='true'] {
+  background-color: hsl(var(--accent));
+}
+
+.aria-\[selected\=\'true\'\]\:text-accent-foreground[aria-selected='true'] {
+  color: hsl(var(--accent-foreground));
+}
+
 .data-\[disabled\]\:pointer-events-none[data-disabled] {
+  pointer-events: none;
+}
+
+.data-\[disabled\=\'true\'\]\:pointer-events-none[data-disabled='true'] {
   pointer-events: none;
 }
 
@@ -1549,6 +1577,10 @@ body {
 }
 
 .data-\[disabled\]\:opacity-50[data-disabled] {
+  opacity: 0.5;
+}
+
+.data-\[disabled\=\'true\'\]\:opacity-50[data-disabled='true'] {
   opacity: 0.5;
 }
 

@@ -1,6 +1,6 @@
 import { PptxComponentBase, TextComponent } from '@/utils/pptx/types';
-import { coordsToPx } from '../../utils/unitConverter';
-import { drawObject } from './drawObject';
+import { coordsToPx } from '@/routes/Generator/utils/unitConverter';
+import { drawObject } from '@/routes/Generator/widgets/VisualCanvas/drawObject';
 
 export const drawSelected = (
     ctx: CanvasRenderingContext2D,

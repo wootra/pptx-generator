@@ -1,11 +1,11 @@
 import { ChartComponent } from '@/utils/pptx/types';
-import StringArea from '../../../../ui/StringArea';
+import StringArea from '@/ui/StringArea';
 import ObjectOptions from './ObjectOptions';
 import React from 'react';
 import { useVisualContainer } from '@/context/VisualContext';
 import DropDownField from '@/ui/DropDownField';
 import PptxGenJS from 'pptxgenjs';
-import { chartTypes } from '../../utils/createChartObj';
+import { chartTypes } from '@/routes/Generator/utils/createChartObj';
 
 const ChartOptions = ({ selectedLayer }: { selectedLayer: ChartComponent }) => {
     const { refreshLayers } = useVisualContainer();

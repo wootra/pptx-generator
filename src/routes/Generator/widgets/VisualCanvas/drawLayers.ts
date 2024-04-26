@@ -1,6 +1,6 @@
 import { VisualLayers } from '@/utils/pptx/types';
 
-import { drawObject } from './drawObject';
+import { drawObject } from '@/routes/Generator/widgets/VisualCanvas/drawObject';
 
 export const drawLayers = (
     ctx: CanvasRenderingContext2D,

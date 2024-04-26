@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { drawLayers } from './drawLayers';
-import { drawSelected } from './drawSelected';
+import { drawLayers } from '@/routes/Generator/widgets/VisualCanvas/drawLayers';
+import { drawSelected } from '@/routes/Generator/widgets/VisualCanvas/drawSelected';
 import { useVisualContainer } from '@/context/VisualContext';
-import { inchToPx, pxToInch } from '../../utils/unitConverter';
+import { inchToPx, pxToInch } from '@/routes/Generator/utils/unitConverter';
 import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const VisualCanvas = () => {

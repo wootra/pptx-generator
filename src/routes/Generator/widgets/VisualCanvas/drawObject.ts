@@ -3,10 +3,10 @@ import {
     PptxComponentBase,
     TextComponent,
 } from '@/utils/pptx/types';
-import { fillRect } from './canvas-utils/fillRect';
+import { fillRect } from '@/routes/Generator/widgets/VisualCanvas/canvas-utils/fillRect';
 import { strokeRect } from './canvas-utils/strokeRect';
 import { setTextDefaultStyles } from './setTextDefaultStyles';
-import { coordsToPx } from '../../utils/unitConverter';
+import { coordsToPx } from '@/routes/Generator/utils/unitConverter';
 export const drawObject = (
     ctx: CanvasRenderingContext2D,
     obj: PptxComponentBase,

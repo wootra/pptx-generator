@@ -16,6 +16,7 @@ import {
     CommandInput,
     CommandItem,
 } from '@/components/ui/command';
+import { CommandList } from 'cmdk';
 
 const DropDownField = ({
     placeHolder = 'Nothing selected',
@@ -62,33 +63,32 @@ const DropDownField = ({
                 </PopoverTrigger>
                 <PopoverContent className='w-[200px] p-0'>
                     <Command>
-                        <CommandInput
-                            placeholder={placeHolder}
-                            className='h-9'
-                        />
-                        <CommandEmpty>{emptySearchText}</CommandEmpty>
-                        <CommandGroup>
-                            {options.map(opt => (
-                                <CommandItem
-                                    key={opt}
-                                    onSelect={selected => {
-                                        if (opt && selected !== opt)
-                                            setValue(opt);
-                                        setOpen(false);
-                                    }}
-                                >
-                                    {opt}
-                                    <CheckIcon
-                                        className={cn(
-                                            'ml-auto h-4 w-4',
-                                            selected === opt
-                                                ? 'opacity-100'
-                                                : 'opacity-0'
-                                        )}
-                                    />
-                                </CommandItem>
-                            ))}
-                        </CommandGroup>
+                        <CommandInput placeholder={emptySearchText} />
+                        <CommandList>
+                            <CommandEmpty>{emptySearchText}</CommandEmpty>
+                            <CommandGroup>
+                                {options.map(opt => (
+                                    <CommandItem
+                                        key={opt}
+                                        value={opt}
+                                        onSelect={selected => {
+                                            setValue(selected);
+                                            setOpen(false);
+                                        }}
+                                    >
+                                        <CheckIcon
+                                            className={cn(
+                                                'mr-2 h-4 w-4',
+                                                selected === opt
+                                                    ? 'opacity-100'
+                                                    : 'opacity-0'
+                                            )}
+                                        />
+                                        {opt}
+                                    </CommandItem>
+                                ))}
+                            </CommandGroup>
+                        </CommandList>
                     </Command>
                 </PopoverContent>
             </Popover>
