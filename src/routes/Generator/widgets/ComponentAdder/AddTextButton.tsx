@@ -1,8 +1,8 @@
-import { useVisualContainer } from '@/context/VisualContext';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 import Button from '@/ui/Button';
 
 const AddTextButton = () => {
-    const { addText } = useVisualContainer();
+    const { addText } = useGeneratorUi();
     return <Button onClick={addText}>add text</Button>;
 };
 

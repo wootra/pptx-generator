@@ -36,9 +36,7 @@ const DropDownField = ({
     const [open, setOpen] = useState(false);
     const setValue = useCallback(
         (val: string) => {
-            const selectedOption = options?.find(
-                opt => opt.toLowerCase() === val.toLowerCase()
-            );
+            const selectedOption = options?.find(opt => opt === val);
             if (selectedOption) {
                 onChange(selectedOption);
             } else {
@@ -73,8 +71,8 @@ const DropDownField = ({
                                     <CommandItem
                                         key={opt}
                                         value={opt}
-                                        onSelect={selected => {
-                                            setValue(selected);
+                                        onSelect={() => {
+                                            setValue(opt);
                                             setOpen(false);
                                         }}
                                     >

@@ -1,9 +1,15 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useVisualContainer } from '../VisualContext';
 import { useToggleSelected } from './useToggleSelected';
+import { useAddNewLayers } from './useAddNewLayers';
+import { useMoveUpDown } from './useMoveUpDown';
 
 export const useGeneratorUiHook = () => {
-    const { download, layers } = useVisualContainer();
+    const { download, layers, setLayers } = useVisualContainer();
+    const addNewLayersObj = useAddNewLayers(setLayers);
+
+    const { moveUp, moveDown } = useMoveUpDown(setLayers);
+
     const [isCode, setIsCode] = useState(false);
     const [isConfigShow, setIsConfigShow] = useState(false);
     const [fileName, setFileName] = useState('pptxgen-untitled');
@@ -56,5 +62,8 @@ export const useGeneratorUiHook = () => {
         unselect,
         toggleSelected,
         selectedLayer,
+        moveUp,
+        moveDown,
+        ...addNewLayersObj,
     };
 };

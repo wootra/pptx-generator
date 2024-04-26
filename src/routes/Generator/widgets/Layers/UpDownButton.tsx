@@ -1,6 +1,6 @@
 import React from 'react';
-import { useVisualContainer } from '../../../../context/VisualContext';
 import { FaArrowCircleDown, FaArrowCircleUp } from 'react-icons/fa';
+import { useGeneratorUi } from '@/context/GeneratorUiContext';
 
 const UpDownButton = ({
     id,
@@ -9,7 +9,7 @@ const UpDownButton = ({
     id: number | null;
     className: string;
 }) => {
-    const { moveUp, moveDown } = useVisualContainer();
+    const { moveUp, moveDown } = useGeneratorUi();
     return (
         id && (
             <>

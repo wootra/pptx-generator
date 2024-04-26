@@ -3,34 +3,38 @@ import {
     getChartDefaultData,
 } from '@/routes/Generator/utils/createChartObj';
 import { createTextObj } from '@/routes/Generator/utils/createTextObj';
-import { VisualLayers } from '@/utils/pptx/types';
+import { PptxComponentBase, VisualLayers } from '@/utils/pptx/types';
 import { useCallback } from 'react';
 import PptxGenJS from 'pptxgenjs';
 
 export const useAddNewLayers = (
     setLayers: React.Dispatch<React.SetStateAction<VisualLayers>>
 ) => {
+    const addNewLayer = useCallback(
+        (layer: PptxComponentBase) => {
+            setLayers(layers => [...layers, layer]);
+        },
+        [setLayers]
+    );
     const addText = useCallback(() => {
-        setLayers(layers => [
-            ...layers,
+        addNewLayer(
             createTextObj('default text', {
                 x: 1,
                 y: 0.5,
                 w: 8,
                 h: 1,
                 fontSize: 30,
-            }),
-        ]);
-    }, [setLayers]);
+            })
+        );
+    }, [addNewLayer]);
 
     const addChart = useCallback(
         (chartType: PptxGenJS.CHART_NAME) => {
             const defaultData = getChartDefaultData(chartType);
             if (defaultData) {
-                setLayers(layers => [
-                    ...layers,
-                    createChartObj(defaultData, { x: 1, y: 1, w: 8, h: 3 }),
-                ]);
+                addNewLayer(
+                    createChartObj(defaultData, { x: 1, y: 1, w: 8, h: 3 })
+                );
             } else {
                 console.error(
                     'chart ' +
@@ -39,7 +43,7 @@ export const useAddNewLayers = (
                 );
             }
         },
-        [setLayers]
+        [addNewLayer]
     );
 
     return { addText, addChart };
