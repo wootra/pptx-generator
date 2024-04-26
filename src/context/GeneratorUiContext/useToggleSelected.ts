@@ -15,5 +15,5 @@ export const useToggleSelected = () => {
         },
         [selected]
     );
-    return { selected, toggleSelected, unselect };
+    return { selected, toggleSelected, unselect, setSelected };
 };

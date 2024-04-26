@@ -6,7 +6,6 @@ import { useMoveUpDown } from './useMoveUpDown';
 
 export const useGeneratorUiHook = () => {
     const { download, layers, setLayers } = useVisualContainer();
-    const addNewLayersObj = useAddNewLayers(setLayers);
 
     const { moveUp, moveDown } = useMoveUpDown(setLayers);
 
@@ -16,7 +15,9 @@ export const useGeneratorUiHook = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
     const [isCopied, setIsCopied] = useState(false);
-    const { selected, toggleSelected, unselect } = useToggleSelected();
+    const { selected, toggleSelected, unselect, setSelected } =
+        useToggleSelected();
+    const addNewLayersObj = useAddNewLayers(setLayers, setSelected);
     const selectedLayer = useMemo(() => {
         return layers.find(l => l.id === selected);
     }, [layers, selected]);

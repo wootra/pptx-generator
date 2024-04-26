@@ -8,11 +8,13 @@ import { useCallback } from 'react';
 import PptxGenJS from 'pptxgenjs';
 
 export const useAddNewLayers = (
-    setLayers: React.Dispatch<React.SetStateAction<VisualLayers>>
+    setLayers: React.Dispatch<React.SetStateAction<VisualLayers>>,
+    selectLayer: (id: number) => void
 ) => {
     const addNewLayer = useCallback(
         (layer: PptxComponentBase) => {
             setLayers(layers => [...layers, layer]);
+            selectLayer?.(layer.id);
         },
         [setLayers]
     );
