@@ -10,7 +10,6 @@ import './output.css';
 import './common.css';
 import { ErrorBoundary, ROUTES } from './routes/router';
 import App from './App';
-import VisualApp from './VisualApp';
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +21,7 @@ export const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        {/* <RouterProvider router={router} /> */}
-        <VisualApp />
+        <RouterProvider router={router} />
+        {/* <VisualApp /> */}
     </React.StrictMode>
 );

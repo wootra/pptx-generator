@@ -4,7 +4,7 @@ import DropDownField from '@/ui/DropDownField';
 import { useState } from 'react';
 import PptxGenJS from 'pptxgenjs';
 import { FaRegPlusSquare } from 'react-icons/fa';
-import { chartTypes } from '../utils/createChartObj';
+import { chartTypes } from '@/routes/Generator/utils/createChartObj';
 
 const AddChartButton = () => {
     const { addChart } = useVisualContainer();
@@ -24,14 +24,4 @@ const AddChartButton = () => {
         </div>
     );
 };
-const AddComponentButtons = () => {
-    const { addText } = useVisualContainer();
-    return (
-        <>
-            <Button onClick={addText}>add text</Button>
-            <AddChartButton />
-        </>
-    );
-};
-
-export default AddComponentButtons;
+export default AddChartButton;

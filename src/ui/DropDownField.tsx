@@ -36,7 +36,9 @@ const DropDownField = ({
     const [open, setOpen] = useState(false);
     const setValue = useCallback(
         (val: string) => {
-            const selectedOption = options?.find(opt => opt === val);
+            const selectedOption = options?.find(
+                opt => opt.toLowerCase() === val.toLowerCase()
+            );
             if (selectedOption) {
                 onChange(selectedOption);
             } else {

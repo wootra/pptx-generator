@@ -1,6 +1,5 @@
 import FileNameField from '@/routes/Generator/widgets/FileNameField';
 import DownloadErrorStatusBar from '@/routes/Generator/widgets/DownloadErrorStatusBar';
-import AddComponentButtons from '@/routes/Generator/widgets/AddComponentButtons';
 import CanvasOrCode from '@/routes/Generator/widgets/CanvasOrCode';
 import LayersPanel from '@/routes/Generator/widgets/LayersPanel';
 import ValuesPanel from '@/routes/Generator/widgets/ValuesPanel';
@@ -9,6 +8,7 @@ import DownloadButton from '@/routes/Generator/widgets/DownloadButton';
 import PreviewButton from '@/routes/Generator/widgets/PreviewButton';
 import ConfigDialog from '@/routes/Generator/widgets/ConfigDialog';
 import { GeneratorUiProvider } from '@/context/GeneratorUiContext';
+import ComponentAdder from '@/routes/Generator/widgets/ComponentAdder';
 
 export const Generator = () => {
     return (
@@ -32,7 +32,7 @@ export const Generator = () => {
                 <div className='flex flex-row w-full h-[calc(100%-5rem)] flex-grow-0 flex-shrink'>
                     <div className='basis-52 flex-none bg-slate-200'>
                         <ul className=' flex flex-col gap-2 p-4'>
-                            <AddComponentButtons />
+                            <ComponentAdder />
                         </ul>
                     </div>
                     <div className='flex-1 overflow-x-auto flex flex-col justify-center items-start h-full w-full'>
