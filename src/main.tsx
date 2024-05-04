@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import './common.css';
 import './output.css';
+import 'prismjs/themes/prism-okaidia.css';
+
 import { ErrorBoundary, ROUTES } from './routes/router';
 import App from './App';
 

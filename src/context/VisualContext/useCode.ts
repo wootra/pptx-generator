@@ -1,3 +1,4 @@
+import { dehydrateLayers } from '@/utils/pptx/addPptxObjects';
 import { VisualLayers } from '@/utils/pptx/types';
 import { useMemo } from 'react';
 
@@ -16,10 +17,11 @@ export const useCode = (layers: VisualLayers) => {
         );
         codeLines.push([
             1,
-            `const layers = ${JSON.stringify(layers, null, 4).replace(
-                /\n/g,
-                '\n\t'
-            )};`,
+            `const layers = ${JSON.stringify(
+                dehydrateLayers(layers),
+                null,
+                4
+            ).replace(/\n/g, '\n\t')};`,
         ]);
         codeLines.push(
             [1, `addPptxObjects(slide, layers);`],

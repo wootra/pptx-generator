@@ -34,6 +34,13 @@ const adderInSlide = (slide: PptxGenJS.Slide, layer: PptxComponentBase) => {
     }
 };
 
+export const dehydrateLayers = (layers: PptxComponentBase[]) => {
+    return layers.map(layer => {
+        const { id: _id, label: _label, ...rest } = layer;
+        return rest;
+    });
+};
+
 export const addPptxObjects = (
     slide: PptxGenJS.Slide,
     layers: VisualLayers
