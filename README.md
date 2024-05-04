@@ -1,78 +1,81 @@
-# pptx generator POC application guide(client)
+# Turborepo starter
 
-below documentation is the example for client side.
-for the server side, move to [SERVER-SIDE-EXAMPLE](./server/README.md)
+This is an official starter Turborepo.
 
-## requirements
+## Using this example
 
-- [pptxgenjs](https://github.com/gitbrent/PptxGenJS/) requires Node18.
-- bundler (in this example, I used [Vite](https://v3.vitejs.dev/guide/)/React/Typescript)
+Run the following command:
 
-## About this application
-
-this application has both pptx generator and utils that helps to create pptx using pptxgenjs library.
-
-to make the code work from this code example, copy @/utils/pptx folder in your application.
-
-## installations
-
-### install pptxgenjs
-
-```bash
-npm i pptxgenjs
+```sh
+npx create-turbo@latest
 ```
 
-### install react-router-dom (optional)
+## What's inside?
 
-I installed [react-router](https://reactrouter.com/en/main/start/tutorial) to separate the test code
-so we can see the code separated from other example code. the purpose of separation is to make a completely modularized code so we can copy whole folder and paste it to where it is needed.
+This Turborepo includes the following packages/apps:
 
-```bash
-npm install react-router-dom localforage match-sorter sort-by
-```
+### Apps and Packages
 
-### install [tailwindcss](https://tailwindcss.com/docs/installation) (optional)
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-I installed tailwindcss to reduce unnecessary styling work as well as mismatch from internal libraries in case it is upgraded but this project is not updated.
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-```bash
-npm install -D tailwindcss
-```
+### Utilities
 
-### install [shadcn/ui](https://ui.shadcn.com/docs/installation/vite) (optional)
+This Turborepo has some additional tools already setup for you:
 
-I installed shadcn/ui for easier ui implementation including dropdown for the pptx generator functionalities.
-This is optional if you want to implement only pdf download functionality.
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-## run application
+### Build
 
-### run the dev server
-
-in the console, type below
-
-```bash
-npm run dev
-```
-
-(optional) if you are on development, open another console, and type below to run tailwindcss
-
-```bash
-npm run tailwind:watch
-```
-
-and see the url and port number showing in the console.
-
-```bash
-  VITE v5.2.10  ready in 794 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
+To build all apps and packages, run the following command:
 
 ```
+cd my-turborepo
+pnpm build
+```
 
-in this example, <http://localhost:5173/> is where you should navigate to see the example project.
+### Develop
 
-## open the browser with the port number
+To develop all apps and packages, run the following command:
 
-it will show multiple buttons for the example
+```
+cd my-turborepo
+pnpm dev
+```
+
+### Remote Caching
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
