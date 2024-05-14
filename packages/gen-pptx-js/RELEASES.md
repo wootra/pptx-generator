@@ -21,7 +21,7 @@
 
 ### Browser Test
 
-1. Run `~/GitHub/PptxGenJS/demos/node browser_server.mjs`
+1. Run `~/GitHub/PptxGenJS/demos/node browser_server`
 2. Ensure newest `pptxgen.bundle.js` is loaded using F12 > Sources tab
 3. Run all tests in browser [Demo Page](file:///Users/brentely/GitHub/PptxGenJS/demos/browser/index.html)
 

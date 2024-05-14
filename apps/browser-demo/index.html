@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="https://github.com/gitbrent" />
+		<meta name="website" content="https://github.com/gitbrent/PptxGenJS/" />
+		<meta name="version" content="3.13.0" />
+		<meta name="updated" content="2023-04-15" />
+		<link
+			rel="icon"
+			href="images/favicon-32x32.png"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			rel="icon"
+			href="images/favicon-16x16.png"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link rel="icon" href="images/favicon.png" />
+		<title>PptxGenJS Feature Demos</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/cyborg/bootstrap.min.css"
+			integrity="sha512-b34ZfRIn0Blhmq0epietqXEPLX9y2iWMqh4gWBrS07ZXddJfCTR7MldF7VaYufO/Vu636aTDMLREmizDqkganw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/yeti/bootstrap.min.css"
+			integrity="sha512-weyvl9mBvXvMHAcN2LCuQ5w0i7ihzrg3EQy6HixwCP88lXKbkL8IRYG8K75sCx1bRTQRDBXLfpW3fKlYfAAsaw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+			media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css"
+			integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"
+			integrity="sha512-axJX7DJduStuBB8ePC8ryGzacZPr3rdLaIDZitiEgWWk2gsXxEFlm4UW0iNzj2h3wp5mOylgHAzBzM4nRSvTZA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- RELEASE (CDN)
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@latest/dist/pptxgen.bundle.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@latest/demos/modules/demos" type="module"></script>
+	-->
+		<!--
+	TODO: [only used during `-beta` dev cycles; update to below on release]
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@master/dist/pptxgen.bundle.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@master/demos/common/demo.js type="module""></script>
+	-->
+		<!-- LOCAL TESTING:
+	<script src="../../libs/jszip.min.js"></script>
+	<script src="../../dist/pptxgen.min.js"></script>
+	<script src="../modules/demos" type="module"></script>
+	-->
+		<!-- LOCAL TESTING: bundle
+	-->
+		<script src="./js/pptxgen.bundle.js"></script>
+		<script src="../modules/demos" type="module"></script>
+
+		<script type="module">
+			import {
+				buildDataTable,
+				doAppStart,
+				execGenSlidesFunc,
+				runAllDemos,
+				table2slides1,
+				table2slides2,
+				table2slidesDemoForTab,
+			} from './js/browser.js';
+
+			$('#btnRunAllDemos').click(() => runAllDemos());
+			//
+			$('#btnGenFunc_Chart').click(() => execGenSlidesFunc('Chart'));
+			$('#btnGenFunc_Image').click(() => execGenSlidesFunc('Image'));
+			$('#btnGenFunc_Media').click(() => execGenSlidesFunc('Media'));
+			$('#btnGenFunc_Shape').click(() => execGenSlidesFunc('Shape'));
+			$('#btnGenFunc_Text').click(() => execGenSlidesFunc('Text'));
+			$('#btnGenFunc_Table').click(() => execGenSlidesFunc('Table'));
+			$('#btnGenFunc_Master').click(() => execGenSlidesFunc('Master'));
+			//
+			$('#numTab2SlideRows').change(() => buildDataTable());
+			$('#table2slides1').click(() => table2slides1());
+			$('#table2slides2').click(() => table2slides2(false));
+			$('#table2slides3').click(() => table2slides2(true));
+			$('#tab2slides_tabNoStyle').click(() =>
+				table2slidesDemoForTab('tabNoStyle', {
+					fill: { color: 'f1f1f1' },
+				})
+			);
+			$('#tab2slides_tabInheritStyle').click(() =>
+				table2slidesDemoForTab('tabInheritStyle', {
+					fill: { color: 'f1f1f1' },
+				})
+			);
+			$('#tab2slides_tabColspan').click(() =>
+				table2slidesDemoForTab('tabColspan')
+			);
+			$('#tab2slides_tabRowspan').click(() =>
+				table2slidesDemoForTab('tabRowspan')
+			);
+			$('#tab2slides_tabRowColspan').click(() =>
+				table2slidesDemoForTab('tabRowColspan')
+			);
+			$('#tab2slides_tabLotsOfLines').click(() =>
+				table2slidesDemoForTab('tabLotsOfLines', { verbose: false })
+			);
+			$('#tab2slides_tabLargeCellText').click(() =>
+				table2slidesDemoForTab('tabLargeCellText', { verbose: false })
+			);
+
+			$(document).ready(() => {
+				doAppStart();
+			});
+		</script>
+	</head>
+	<body class="bg-light" id="root"></body>
+</html>

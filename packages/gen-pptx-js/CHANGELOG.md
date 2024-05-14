@@ -153,7 +153,7 @@ Comprehensive Pull
 
 ### Release Summary
 
-- **Major Update**: demo code (they're all .mjs modules now!); dropped support for IE11 (RIP!) in demo app.
+- **Major Update**: demo code (they're all  modules now!); dropped support for IE11 (RIP!) in demo app.
 - **IE11 Note**: Dropped support for IE11 (use v3.5.0 or below) (library still works with IE11 using polyfill)
 
 ### Added
