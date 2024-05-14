@@ -1421,7 +1421,7 @@ export interface IChartPropsAxisCat {
 	catAxisLabelFontFace?: string;
 	catAxisLabelFontItalic?: boolean;
 	catAxisLabelFontSize?: number;
-	catAxisLabelFrequency?: string;
+	catAxisLabelFrequency?: number;
 	catAxisLabelPos?: 'none' | 'low' | 'high' | 'nextTo';
 	catAxisLabelRotate?: number;
 	catAxisLineColor?: string;
@@ -1929,9 +1929,9 @@ export interface PresSlide extends SlideBaseProps {
 	_slideLayout: SlideLayout | null;
 	_slideId: number;
 	addChart: (
-		type: CHART_NAME | IChartMulti[],
-		data: IOptsChartData[],
-		options?: IChartOpts
+		...args:
+			| [CHART_NAME, IOptsChartData[], IChartOpts]
+			| [IChartMulti[], IChartOpts]
 	) => PresSlide;
 	addImage: (options: ImageProps) => PresSlide;
 	addMedia: (options: MediaProps) => PresSlide;

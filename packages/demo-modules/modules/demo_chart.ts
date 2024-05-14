@@ -6,7 +6,16 @@
  * VER.: 3.12.0
  * BLD.: 20230116
  */
-import PptxGenJS, { IChartOpts, TableCell, TableCellProps } from 'gen-pptx-js';
+import PptxGenJS, {
+	IChartMulti,
+	IChartOpts,
+	IChartPropsChartLine,
+	SectionProps,
+	ShadowProps,
+	TableCell,
+	TableCellProps,
+	TextPropsOptions,
+} from 'gen-pptx-js';
 import {
 	BASE_TABLE_OPTS,
 	BASE_TEXT_OPTS_L,
@@ -32,7 +41,7 @@ import {
 } from './enums_charts';
 
 export function genSlides_Chart(pptx: PptxGenJS) {
-	pptx.addSection({ title: 'Charts' });
+	pptx.addSection({ title: 'Charts' } as SectionProps);
 
 	genSlide01(pptx);
 	genSlide02(pptx);
@@ -57,7 +66,7 @@ export function genSlides_Chart(pptx: PptxGenJS) {
 	genSlide21(pptx);
 
 	if (TESTMODE) {
-		pptx.addSection({ title: 'Charts-DevTest' });
+		pptx.addSection({ title: 'Charts-DevTest' } as SectionProps);
 		devSlide01(pptx);
 		devSlide02(pptx);
 		devSlide03(pptx);
@@ -79,10 +88,10 @@ function genSlide01(pptx: PptxGenJS) {
 			[
 				{
 					text: 'Chart Options: Chart Title, Cat/Val Axis Title',
-					options: BASE_TEXT_OPTS_L as TableCellProps,
+					options: BASE_TEXT_OPTS_L,
 				},
-				BASE_TEXT_OPTS_R as TableCell,
-			],
+				BASE_TEXT_OPTS_R,
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -137,7 +146,7 @@ function genSlide02(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -173,7 +182,7 @@ function genSlide02(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT: H/bar
-	let optsChartBar1 = {
+	let optsChartBar1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -190,19 +199,19 @@ function genSlide02(pptx: PptxGenJS) {
 		catAxisLabelColor: COLORS_ACCENT[0],
 		catAxisLabelFontFace: 'Helvetica Neue',
 		catAxisLabelFontSize: 12,
-		catAxisOrientation: 'maxMin',
-		catAxisMajorTickMark: 'in',
+		catAxisOrientation: 'minMax',
+		catAxisMajorTickMark: 'inside',
 		catAxisMinorTickMark: 'cross',
 
 		valAxisMajorTickMark: 'cross',
-		valAxisMinorTickMark: 'out',
+		valAxisMinorTickMark: 'outside',
 		//valAxisLabelColor: COLORS_ACCENT[0],
 		//valAxisCrossesAt: 100,
 	};
 	slide.addChart(pptx.charts.BAR, arrDataSersCats, optsChartBar1);
 
 	// TOP-RIGHT: V/col
-	let optsChartBar2 = {
+	let optsChartBar2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: 6.0,
@@ -232,7 +241,7 @@ function genSlide02(pptx: PptxGenJS) {
 		showValue: true,
 
 		valAxisLabelColor: COLORS_ACCENT[0],
-		valAxisOrientation: 'maxMin',
+		valAxisOrientation: 'minMax',
 		valAxisMajorTickMark: 'none',
 		valAxisMinorTickMark: 'none',
 		//valAxisLogScaleBase: '25',
@@ -243,7 +252,7 @@ function genSlide02(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR, arrDataRegions, optsChartBar2);
 
 	// BTM-LEFT: H/bar - TITLE and LEGEND
-	let optsChartBar3 = {
+	let optsChartBar3: IChartOpts = {
 		x: 0.5,
 		y: 3.8,
 		w: 6.0,
@@ -276,7 +285,7 @@ function genSlide02(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR, dataChartBar3Series, optsChartBar3);
 
 	// BTM-RIGHT: V/col - TITLE and LEGEND
-	let optsChartBar4 = {
+	let optsChartBar4: IChartOpts = {
 		x: 7.0,
 		y: 3.8,
 		w: 6.0,
@@ -292,7 +301,7 @@ function genSlide02(pptx: PptxGenJS) {
 		catAxisLabelColor: COLORS_ACCENT[0],
 		catAxisLabelFontFace: 'Calibri',
 		catAxisLabelFontSize: 11,
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		//
 		valAxisMaxVal: 5000,
 		valAxisLabelColor: COLORS_ACCENT[0],
@@ -329,7 +338,7 @@ function genSlide03(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -360,7 +369,7 @@ function genSlide03(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT: H/bar
-	let optsChartBar1 = {
+	let optsChartBar1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -390,7 +399,7 @@ function genSlide03(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR, arrDataRegions, optsChartBar1);
 
 	// TOP-RIGHT: V/col
-	let optsChartBar2 = {
+	let optsChartBar2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: 6.0,
@@ -419,7 +428,7 @@ function genSlide03(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR, arrDataRegions, optsChartBar2);
 
 	// BTM-LEFT: H/bar - TITLE and LEGEND
-	let optsChartBar3 = {
+	let optsChartBar3: IChartOpts = {
 		x: 0.5,
 		y: 3.8,
 		w: 6.0,
@@ -437,7 +446,7 @@ function genSlide03(pptx: PptxGenJS) {
 		catAxisLabelColor: 'CC0000',
 		catAxisLabelFontFace: 'Helvetica Neue',
 		catAxisLabelFontSize: 10,
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		catAxisTitle: 'Housing Type',
 		catAxisTitleColor: '696969',
 		catAxisTitleFontSize: 10,
@@ -445,7 +454,7 @@ function genSlide03(pptx: PptxGenJS) {
 
 		catGridLine: { color: 'cc6699', style: 'dash', size: 1 },
 		valGridLine: { style: 'none' },
-		valAxisOrientation: 'maxMin',
+		valAxisOrientation: 'minMax',
 		valAxisHidden: true,
 		valAxisDisplayUnitLabel: true,
 
@@ -459,7 +468,7 @@ function genSlide03(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR, arrDataHighVals, optsChartBar3);
 
 	// BTM-RIGHT: V/col - TITLE and LEGEND
-	let optsChartBar4 = {
+	let optsChartBar4: IChartOpts = {
 		x: 7.0,
 		y: 3.8,
 		w: 6.0,
@@ -498,7 +507,7 @@ function genSlide03(pptx: PptxGenJS) {
 }
 
 // SLIDE 4: Bar Chart: Stacked
-function genSlide04(pptx) {
+function genSlide04(pptx: PptxGenJS) {
 	let slide = pptx.addSlide({ sectionTitle: 'Charts' });
 	slide.addNotes(
 		'API Docs: https://gitbrent.github.io/PptxGenJS/docs/api-charts.html'
@@ -511,7 +520,7 @@ function genSlide04(pptx) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -530,7 +539,7 @@ function genSlide04(pptx) {
 	];
 
 	// TOP-LEFT: H/bar
-	let optsChartBar1 = {
+	let optsChartBar1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -541,7 +550,7 @@ function genSlide04(pptx) {
 		barGrouping: 'stacked',
 		chartColors: ['F2AF00', '4472C4'],
 
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		catAxisLabelColor: '4472C4',
 		catAxisLabelFontFace: 'Helvetica Neue',
 		catAxisLabelFontSize: 14,
@@ -556,7 +565,7 @@ function genSlide04(pptx) {
 	slide.addChart(pptx.charts.BAR, arrDataRegions, optsChartBar1);
 
 	// TOP-RIGHT: V/col
-	let optsChartBar2 = {
+	let optsChartBar2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: 6.0,
@@ -587,7 +596,7 @@ function genSlide04(pptx) {
 	slide.addChart(pptx.charts.BAR, dataChartBar3Series, optsChartBar2);
 
 	// BTM-LEFT: H/bar - 100% layout without axis labels
-	let optsChartBar3 = {
+	let optsChartBar3: IChartOpts = {
 		x: 0.5,
 		y: 3.8,
 		w: 6.0,
@@ -612,7 +621,7 @@ function genSlide04(pptx) {
 	slide.addChart(pptx.charts.BAR, arrDataRegions, optsChartBar3);
 
 	// BTM-RIGHT: V/col - TITLE and LEGEND
-	let optsChartBar4 = {
+	let optsChartBar4: IChartOpts = {
 		x: 7.0,
 		y: 3.8,
 		w: 6.0,
@@ -651,7 +660,7 @@ function genSlide05(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -662,7 +671,7 @@ function genSlide05(pptx: PptxGenJS) {
 		[
 			{
 				name: 'Excel Date Values',
-				labels: [37987, 38018, 38047, 38078, 38108, 38139],
+				labels: ['37987', '38018', '38047', '38078', '38108', '38139'],
 				values: [20, 30, 10, 25, 15, 5],
 			},
 		],
@@ -707,7 +716,7 @@ function genSlide05(pptx: PptxGenJS) {
 		[
 			{
 				name: 'Too Many Colors Series',
-				labels: [37987, 38018, 38047, 38078, 38108, 38139],
+				labels: ['37987', '38018', '38047', '38078', '38108', '38139'],
 				values: [0.2, 0.3, 0.1, 0.25, 0.15, 0.05],
 			},
 		],
@@ -839,8 +848,8 @@ function genSlide05(pptx: PptxGenJS) {
 				'9BA0A3',
 			],
 			barGapWidthPct: 25,
-			catAxisOrientation: 'maxMin',
-			valAxisOrientation: 'maxMin',
+			catAxisOrientation: 'minMax',
+			valAxisOrientation: 'minMax',
 			valAxisMaxVal: 200,
 			valAxisMajorUnit: 25,
 		}
@@ -861,7 +870,7 @@ function genSlide06(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -880,7 +889,7 @@ function genSlide06(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT: H/bar
-	let optsChartBar1 = {
+	let optsChartBar1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -899,7 +908,7 @@ function genSlide06(pptx: PptxGenJS) {
 		catAxisLineColor: COLORS_SPECTRUM[1],
 		catAxisLabelFontFace: 'Arial',
 		catAxisLabelFontSize: 10,
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		//
 		serAxisLabelFontFace: 'Arial',
 		serAxisLabelFontSize: 10,
@@ -915,7 +924,7 @@ function genSlide06(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR3D, arrDataRegions, optsChartBar1);
 
 	// TOP-RIGHT: V/col
-	let optsChartBar2 = {
+	let optsChartBar2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: 6.0,
@@ -944,7 +953,7 @@ function genSlide06(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR3D, arrDataRegions, optsChartBar2);
 
 	// BTM-LEFT: H/bar - TITLE and LEGEND
-	let optsChartBar3 = {
+	let optsChartBar3: IChartOpts = {
 		x: 0.5,
 		y: 3.8,
 		w: 6.0,
@@ -972,7 +981,7 @@ function genSlide06(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BAR3D, arrDataRegions, optsChartBar3);
 
 	// BTM-RIGHT: V/col - TITLE and LEGEND
-	let optsChartBar4 = {
+	let optsChartBar4: IChartOpts = {
 		x: 7.0,
 		y: 3.8,
 		w: 6.0,
@@ -1014,7 +1023,7 @@ function genSlide07(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1042,7 +1051,7 @@ function genSlide07(pptx: PptxGenJS) {
 
 			valAxisMaxVal: 1,
 			barDir: 'bar',
-			axisLabelFormatCode: '#%',
+			valAxisLabelFormatCode: '#%',
 			catGridLine: {
 				color: 'D8D8D8',
 				style: 'dash',
@@ -1059,7 +1068,7 @@ function genSlide07(pptx: PptxGenJS) {
 			valAxisLineShow: false,
 			barGrouping: 'stacked',
 			catAxisLabelPos: 'low',
-			valueBarColors: true,
+			// valueBarColors: true,
 			shadow: { type: 'none' },
 			chartColors: [
 				'0077BF',
@@ -1105,17 +1114,17 @@ function genSlide08(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
 	slide.addText(
 		`(${CHART_DATA.LongTermIntRates.sourceUrl})`,
-		FOOTER_TEXT_OPTS
+		FOOTER_TEXT_OPTS as TextPropsOptions
 	);
 
 	// FULL SLIDE:
-	const OPTS_CHART = {
+	const OPTS_CHART: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: '95%',
@@ -1140,7 +1149,7 @@ function genSlide08(pptx: PptxGenJS) {
 }
 
 // SLIDE 9: Line Chart: Line Smoothing, Line Size, Symbol Size
-function genSlide09(pptx) {
+function genSlide09(pptx: PptxGenJS) {
 	let slide = pptx.addSlide({ sectionTitle: 'Charts' });
 	slide.addNotes(
 		'API Docs: https://gitbrent.github.io/PptxGenJS/docs/api-charts.html'
@@ -1153,12 +1162,12 @@ function genSlide09(pptx) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
 
-	let optsChartLine1 = {
+	let optsChartLine1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -1173,7 +1182,7 @@ function genSlide09(pptx) {
 	};
 	slide.addChart(pptx.charts.LINE, arrDataLineStat, optsChartLine1);
 
-	let optsChartLine2 = {
+	let optsChartLine2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: 6.0,
@@ -1187,7 +1196,7 @@ function genSlide09(pptx) {
 	};
 	slide.addChart(pptx.charts.LINE, arrDataLineStat, optsChartLine2);
 
-	let optsChartLine3 = {
+	let optsChartLine3: IChartOpts = {
 		x: 0.5,
 		y: 4.0,
 		w: 6.0,
@@ -1203,7 +1212,7 @@ function genSlide09(pptx) {
 	slide.addChart(pptx.charts.LINE, arrDataLineStat, optsChartLine3);
 
 	// QA: DEMO: Test shadow option
-	let shadowOpts = {
+	const shadowOpts: ShadowProps = {
 		type: 'outer',
 		color: 'cd0011',
 		blur: 3,
@@ -1211,7 +1220,7 @@ function genSlide09(pptx) {
 		angle: 75,
 		opacity: 0.8,
 	};
-	let optsChartLine4 = {
+	let optsChartLine4: IChartOpts = {
 		x: 7.0,
 		y: 4.0,
 		w: 6.0,
@@ -1229,7 +1238,7 @@ function genSlide09(pptx) {
 // SLIDE 10: Line Chart: `lineDataSymbol` and `lineDataSymbolSize`
 function genSlide10(pptx: PptxGenJS) {
 	const intWgap = 4.25;
-	const opts_lineDataSymbol = [
+	const opts_lineDataSymbol: IChartPropsChartLine['lineDataSymbol'][] = [
 		'circle',
 		'dash',
 		'diamond',
@@ -1250,7 +1259,7 @@ function genSlide10(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1268,7 +1277,7 @@ function genSlide10(pptx: PptxGenJS) {
 			h: 2.25,
 			lineCap: 'round',
 			lineDataSymbol: opt,
-			lineDataSymbolSize: idx == 5 ? 9 : idx == 6 ? 12 : null,
+			lineDataSymbolSize: idx == 5 ? 9 : idx == 6 ? 12 : undefined,
 			chartColors: COLORS_VIVID,
 			title: opt,
 			showTitle: true,
@@ -1290,7 +1299,7 @@ function genSlide11(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1322,7 +1331,7 @@ function genSlide11(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT
-	let optsChartLine1 = {
+	let optsChartLine1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: '45%',
@@ -1341,7 +1350,7 @@ function genSlide11(pptx: PptxGenJS) {
 		catAxisLabelFontSize: 10,
 		catAxisLabelColor: '494949',
 		catAxisLabelRotate: 45,
-		chartColors: ['EF423E'],
+		// chartColors: ['EF423E'],
 		chartColorsOpacity: 25,
 		//showValue: true,
 	};
@@ -1352,7 +1361,7 @@ function genSlide11(pptx: PptxGenJS) {
 	);
 
 	// TOP-RIGHT (stacked area chart)
-	let optsChartLine2 = {
+	let optsChartLine2: IChartOpts = {
 		x: 7,
 		y: 0.6,
 		w: '45%',
@@ -1369,7 +1378,7 @@ function genSlide11(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.AREA, arrDataTimeline2ser, optsChartLine2);
 
 	// BOTTOM-LEFT
-	let optsChartLine3 = {
+	let optsChartLine3: IChartOpts = {
 		x: 0.5,
 		y: 4.0,
 		w: '45%',
@@ -1381,7 +1390,7 @@ function genSlide11(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.AREA, arrDataTimeline2ser, optsChartLine3);
 
 	// BOTTOM-RIGHT
-	let optsChartLine4 = {
+	let optsChartLine4: IChartOpts = {
 		x: 7,
 		y: 4.0,
 		w: '45%',
@@ -1406,7 +1415,7 @@ function genSlide12(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1456,7 +1465,7 @@ function genSlide12(pptx: PptxGenJS) {
 		h: 3.2,
 		chartArea: { fill: { color: 'F1F1F1' } },
 		chartColors: COLORS_SPECTRUM,
-		dataBorder: { pt: '1', color: 'F1F1F1' },
+		dataBorder: { pt: 1, color: 'F1F1F1' },
 		showLegend: true,
 		showPercent: true,
 		legendPos: 't',
@@ -1476,7 +1485,7 @@ function genSlide12(pptx: PptxGenJS) {
 		h: 3.2,
 		chartArea: { fill: { color: 'F1F1F1' } },
 		chartColors: COLORS_CHART,
-		dataBorder: { pt: '1', color: 'F1F1F1' },
+		dataBorder: { pt: 1, color: 'F1F1F1' },
 		//
 		showValue: true,
 		showLabel: true,
@@ -1493,7 +1502,7 @@ function genSlide12(pptx: PptxGenJS) {
 		w: 4.0,
 		h: 3.2,
 		chartArea: { fill: { color: 'F1F1F1' } },
-		dataBorder: { pt: '1', color: 'F1F1F1' },
+		dataBorder: { pt: 1, color: 'F1F1F1' },
 		chartColors: COLORS_SPECTRUM,
 		dataLabelColor: 'F1F1F1',
 		showPercent: true,
@@ -1508,7 +1517,7 @@ function genSlide12(pptx: PptxGenJS) {
 		w: 4.0,
 		h: 3.2,
 		chartArea: { fill: { color: 'F1F1F1' } },
-		dataBorder: { pt: '1', color: 'F1F1F1' },
+		dataBorder: { pt: 1, color: 'F1F1F1' },
 		showPercent: true,
 		showLegend: true,
 		legendPos: 'b',
@@ -1519,7 +1528,7 @@ function genSlide12(pptx: PptxGenJS) {
 }
 
 // SLIDE 13: Doughnut Chart
-function genSlide13(pptx) {
+function genSlide13(pptx: PptxGenJS) {
 	let slide = pptx.addSlide({ sectionTitle: 'Charts' });
 	slide.addNotes(
 		'API Docs: https://gitbrent.github.io/PptxGenJS/docs/api-charts.html'
@@ -1532,12 +1541,12 @@ function genSlide13(pptx) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
 
-	let optsChartPie1 = {
+	let optsChartPie1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 6.0,
@@ -1563,14 +1572,14 @@ function genSlide13(pptx) {
 	};
 	slide.addChart(pptx.charts.DOUGHNUT, dataChartPieStat, optsChartPie1);
 
-	let optsChartPie2 = {
+	let optsChartPie2: IChartOpts = {
 		x: 6.83,
 		y: 0.6,
 		w: 6.0,
 		h: 6.4,
 		chartArea: { fill: { color: '404040' } },
 		chartColors: COLORS_VIVID,
-		dataBorder: { pt: '1', color: 'F1F1F1' },
+		dataBorder: { pt: 1, color: 'F1F1F1' },
 		dataLabelColor: 'FFFFFF',
 		showLabel: true,
 		showValue: true,
@@ -1606,7 +1615,7 @@ function genSlide14(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1652,7 +1661,7 @@ function genSlide14(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT
-	let optsChartScat1 = {
+	let optsChartScat1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: '45%',
@@ -1672,7 +1681,7 @@ function genSlide14(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.SCATTER, arrDataScatter1, optsChartScat1);
 
 	// TOP-RIGHT
-	let optsChartScat2 = {
+	let optsChartScat2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: '45%',
@@ -1693,15 +1702,15 @@ function genSlide14(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.SCATTER, arrDataScatter2, optsChartScat2);
 
 	// BOTTOM-LEFT: (Labels)
-	let optsChartScat3 = {
+	let optsChartScat3: IChartOpts = {
 		x: 0.5,
 		y: 4.0,
 		w: '45%',
 		h: 3,
 		plotArea: { fill: { color: 'F2F9FC' } },
 
-		//catAxisOrientation: 'maxMin',
-		//valAxisOrientation: 'maxMin',
+		//catAxisOrientation: 'minMax',
+		//valAxisOrientation: 'minMax',
 		showLegend: true,
 		chartColors: ['FF0000', '0088CC'],
 
@@ -1739,7 +1748,7 @@ function genSlide15(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1777,7 +1786,7 @@ function genSlide15(pptx: PptxGenJS) {
 	];
 
 	// TOP-LEFT
-	let optsChartBubble1 = {
+	let optsChartBubble1: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: '45%',
@@ -1798,7 +1807,7 @@ function genSlide15(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BUBBLE, arrDataBubble1, optsChartBubble1);
 
 	// TOP-RIGHT
-	let optsChartBubble2 = {
+	let optsChartBubble2: IChartOpts = {
 		x: 7.0,
 		y: 0.6,
 		w: '45%',
@@ -1818,7 +1827,7 @@ function genSlide15(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BUBBLE, arrDataBubble2, optsChartBubble2);
 
 	// BOTTOM-LEFT
-	let optsChartBubble3 = {
+	let optsChartBubble3: IChartOpts = {
 		x: 0.5,
 		y: 4.0,
 		w: '45%',
@@ -1828,13 +1837,13 @@ function genSlide15(pptx: PptxGenJS) {
 
 		catAxisLabelColor: 'F1F1F1',
 		catAxisLabelFontSize: 10,
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		showCatAxisTitle: false,
 		//
 		valAxisLabelColor: 'F1F1F1',
 		valAxisLabelFontSize: 10,
 		valAxisMinVal: 0,
-		valAxisOrientation: 'maxMin',
+		valAxisOrientation: 'minMax',
 		showValAxisTitle: false,
 		//
 		dataBorder: { pt: 2, color: 'e1e1e1' },
@@ -1846,7 +1855,7 @@ function genSlide15(pptx: PptxGenJS) {
 	slide.addChart(pptx.charts.BUBBLE, arrDataBubble1, optsChartBubble3);
 
 	// BOTTOM-RIGHT
-	let optsChartBubble4 = {
+	let optsChartBubble4: IChartOpts = {
 		x: 7.0,
 		y: 4.0,
 		w: '45%',
@@ -1871,7 +1880,7 @@ function genSlide16(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -1904,7 +1913,7 @@ function genSlide16(pptx: PptxGenJS) {
 	// TOP-ROW
 	{
 		// TOP-L: `{ radar:'normal' }`
-		let optsChartRadar1 = {
+		let optsChartRadar1: IChartOpts = {
 			x: 0.5,
 			y: 0.6,
 			w: 4.0,
@@ -1924,7 +1933,7 @@ function genSlide16(pptx: PptxGenJS) {
 		slide.addChart(pptx.charts.RADAR, arrDataRegions, optsChartRadar1);
 
 		// TOP-C: `{ radar:'marker' }` Cat Axis options
-		let optsChartRadar2 = {
+		let optsChartRadar2: IChartOpts = {
 			x: 4.65,
 			y: 0.6,
 			w: 4.0,
@@ -1942,7 +1951,7 @@ function genSlide16(pptx: PptxGenJS) {
 		slide.addChart(pptx.charts.RADAR, arrDataRegions, optsChartRadar2);
 
 		// TOP-R: `{ radar:'marker' }` Cat Axis options
-		let optsChartRadar3 = {
+		let optsChartRadar3: IChartOpts = {
 			x: 8.8,
 			y: 0.6,
 			w: 4.0,
@@ -1963,7 +1972,7 @@ function genSlide16(pptx: PptxGenJS) {
 	// BTM-ROW
 	{
 		// BTM-L: marker/line options
-		let optsChartRadar10 = {
+		let optsChartRadar10: IChartOpts = {
 			x: 0.5,
 			y: 3.8,
 			w: 6.0,
@@ -1996,7 +2005,7 @@ function genSlide16(pptx: PptxGenJS) {
 		slide.addChart(pptx.charts.RADAR, arrDataStudents, optsChartRadar10);
 
 		// BTM-R: Filled/Axis Options
-		let optsChartRadar11 = {
+		let optsChartRadar11: IChartOpts = {
 			x: 6.83,
 			y: 3.8,
 			w: 6.0,
@@ -2045,7 +2054,7 @@ function genSlide17(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -2159,7 +2168,7 @@ function genSlide18(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -2266,13 +2275,16 @@ function genSlide19(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
-	slide.addText(`(${CHART_DATA.EvSales_Vol.sourceUrl})`, FOOTER_TEXT_OPTS);
+	slide.addText(
+		`(${CHART_DATA.EvSales_Vol.sourceUrl})`,
+		FOOTER_TEXT_OPTS as TextPropsOptions
+	);
 
-	const comboProps = {
+	const comboProps: IChartOpts = {
 		x: 0.5,
 		y: 0.6,
 		w: 12.3,
@@ -2314,7 +2326,7 @@ function genSlide19(pptx: PptxGenJS) {
 		//
 		catAxes: [{ catAxisTitle: 'Year' }, { catAxisHidden: true }],
 	};
-	const comboTypes = [
+	const comboTypes: IChartMulti[] = [
 		{
 			type: pptx.charts.BAR,
 			data: CHART_DATA.EvSales_Vol.chartData,
@@ -2348,14 +2360,14 @@ function genSlide20(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
 
 	// TOP-L: charts use same val axis (T-B)
 	function doColumnAreaLine() {
-		let opts = {
+		let opts: IChartOpts = {
 			x: 0.6,
 			y: 0.6,
 			w: 6.0,
@@ -2393,7 +2405,7 @@ function genSlide20(pptx: PptxGenJS) {
 		};
 
 		let labels = ['April', 'May', 'June', 'July', 'August'];
-		let chartTypes = [
+		let chartTypes: IChartMulti[] = [
 			{
 				type: pptx.charts.AREA,
 				data: [
@@ -2445,7 +2457,7 @@ function genSlide20(pptx: PptxGenJS) {
 
 	// TOP-R: charts use diff val axis (T-B, L-R)
 	function doStackedLine() {
-		let opts = {
+		let opts: IChartOpts = {
 			x: 6.83,
 			y: 0.6,
 			w: 6.0,
@@ -2464,7 +2476,7 @@ function genSlide20(pptx: PptxGenJS) {
 		};
 
 		let labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-		let chartTypes = [
+		let chartTypes: IChartMulti[] = [
 			{
 				type: pptx.charts.BAR,
 				data: [
@@ -2507,7 +2519,7 @@ function genSlide20(pptx: PptxGenJS) {
 
 	// BTM-L:
 	function doStackedDot() {
-		let opts = {
+		let opts: IChartOpts = {
 			x: 0.5,
 			y: 4.0,
 			w: 6.0,
@@ -2541,7 +2553,7 @@ function genSlide20(pptx: PptxGenJS) {
 				{
 					showValAxisTitle: true,
 					valAxisTitle: 'Secondary Value Axis',
-					catAxisOrientation: 'maxMin',
+					catAxisOrientation: 'minMax',
 					valAxisMajorUnit: 1,
 					valAxisMaxVal: 10,
 					valAxisMinVal: 1,
@@ -2559,7 +2571,7 @@ function genSlide20(pptx: PptxGenJS) {
 		};
 
 		let labels = ['Q1', 'Q2', 'Q3', 'Q4', 'OT'];
-		let chartTypes = [
+		let chartTypes: IChartMulti[] = [
 			{
 				type: pptx.charts.BAR,
 				data: [
@@ -2605,7 +2617,7 @@ function genSlide20(pptx: PptxGenJS) {
 
 	// BTM-R:
 	function doBarCol() {
-		let opts = {
+		let opts: IChartOpts = {
 			x: 6.83,
 			y: 4.0,
 			w: 6.0,
@@ -2631,7 +2643,7 @@ function genSlide20(pptx: PptxGenJS) {
 				{
 					showValAxisTitle: true,
 					valAxisTitle: 'Secondary Value Axis',
-					catAxisOrientation: 'maxMin',
+					catAxisOrientation: 'minMax',
 					valAxisMajorUnit: 1,
 					valAxisMaxVal: 10,
 					valAxisMinVal: 1,
@@ -2721,7 +2733,7 @@ function genSlide21(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -2877,7 +2889,7 @@ function devSlide01(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -2933,7 +2945,7 @@ function devSlide02(pptx: PptxGenJS) {
 			[
 				{ text: 'DEV-TEST: lots-of-series', options: BASE_TEXT_OPTS_L },
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -2980,7 +2992,7 @@ function devSlide03(pptx: PptxGenJS) {
 			[
 				{ text: 'DEV-TEST: escaped-xml', options: BASE_TEXT_OPTS_L },
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -3009,8 +3021,8 @@ function devSlide03(pptx: PptxGenJS) {
 			showValue: true,
 			chartColors: [...COLORS_ACCENT, ...COLORS_ACCENT],
 			barGapWidthPct: 25,
-			catAxisOrientation: 'maxMin',
-			valAxisOrientation: 'maxMin',
+			catAxisOrientation: 'minMax',
+			valAxisOrientation: 'minMax',
 			valAxisMaxVal: 10,
 			valAxisMajorUnit: 1,
 		}
@@ -3028,7 +3040,7 @@ function devSlide04(pptx: PptxGenJS) {
 			[
 				{ text: 'DEV-TEST: combo-chart', options: BASE_TEXT_OPTS_L },
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -3110,7 +3122,7 @@ function devSlide05(pptx: PptxGenJS) {
 			[
 				{ text: 'DEV-TEST: ref-test', options: BASE_TEXT_OPTS_L },
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -3162,7 +3174,7 @@ function devSlide06(pptx: PptxGenJS) {
 			[
 				{ text: 'DEV-TEST: legacy-tests', options: BASE_TEXT_OPTS_L },
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);
@@ -3206,7 +3218,7 @@ function devSlide06(pptx: PptxGenJS) {
 		catAxisLabelColor: 'CC0000',
 		catAxisLabelFontFace: 'Helvetica Neue',
 		catAxisLabelFontSize: 14,
-		catAxisOrientation: 'maxMin',
+		catAxisOrientation: 'minMax',
 		catAxisMajorTickMark: 'in',
 		catAxisMinorTickMark: 'cross',
 		//
@@ -3235,7 +3247,7 @@ function devSlide07(pptx: PptxGenJS) {
 					options: BASE_TEXT_OPTS_L,
 				},
 				BASE_TEXT_OPTS_R,
-			],
+			] as TableCell[],
 		],
 		BASE_TABLE_OPTS
 	);

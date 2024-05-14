@@ -1459,7 +1459,7 @@ export interface IChartPropsAxisCat {
 	catAxisLabelFontFace?: string;
 	catAxisLabelFontItalic?: boolean;
 	catAxisLabelFontSize?: number;
-	catAxisLabelFrequency?: string;
+	catAxisLabelFrequency?: number;
 	catAxisLabelPos?: 'none' | 'low' | 'high' | 'nextTo';
 	catAxisLabelRotate?: number;
 	catAxisLineColor?: string;
