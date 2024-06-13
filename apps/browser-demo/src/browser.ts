@@ -2,6 +2,7 @@
  * NAME: browser.js
  * DESC: module for /demos/browser/index.html
  */
+import '@repo/demo-modules';
 import {
 	execGenSlidesFuncs,
 	runEveryTest,
@@ -19,7 +20,7 @@ import {
 	SVG_INFO_CIRCLE,
 } from '@repo/demo-modules/modules/media';
 import PptxGenJS from 'gen-pptx-js';
-import bootstrap from 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
 import Prism from 'prismjs';
 // ==================================================================================================================

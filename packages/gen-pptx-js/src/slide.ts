@@ -16,6 +16,7 @@ import {
 	ISlideRelChart,
 	ISlideRelMedia,
 	ImageProps,
+	Margin,
 	MediaProps,
 	PresLayout,
 	PresSlide,
@@ -28,7 +29,10 @@ import {
 	TextPropsOptions,
 } from './core-interfaces';
 import * as genObj from './gen-objects';
-
+type ChartArgs =
+	| [CHART_NAME, IOptsChartData[], IChartOpts]
+	| [IChartMulti[], IChartOpts]
+	| [IChartMulti[], IChartOpts, undefined];
 export default class Slide implements PresSlide {
 	private readonly _setSlideNum: (value: SlideNumberProps) => void;
 
@@ -76,6 +80,9 @@ export default class Slide implements PresSlide {
 		 */
 		this._slideNumberProps = this._slideLayout?._slideNumberProps || null;
 	}
+
+	_bkgdImgRid?: number;
+	_margin?: Margin;
 
 	/**
 	 * Background color
@@ -163,16 +170,28 @@ export default class Slide implements PresSlide {
 	 * @param {IChartOpts} options - chart options
 	 * @return {PresSlide} this Slide
 	 */
-	addChart(
-		type: CHART_NAME | IChartMulti[],
-		data: IOptsChartData[],
-		options?: IChartOpts
-	): PresSlide {
+	addChart(...args: ChartArgs): PresSlide {
+		const [type, data, options] = args;
 		// FUTURE: TODO-VERSION-4: Remove first arg - only take data and opts, with "type" required on opts
 		// Set `_type` on IChartOptsLib as its what is used as object is passed around
 		const optionsWithType: IChartOptsLib = options || {};
 		optionsWithType._type = type;
-		genObj.addChartDefinition(this as PresSlide, type, data, options);
+		if (Array.isArray(type)) {
+			genObj.addChartDefinition(
+				this as PresSlide,
+				type,
+				data as IChartOpts,
+				undefined
+			);
+		} else {
+			genObj.addChartDefinition(
+				this as PresSlide,
+				type,
+				data as IOptsChartData[],
+				options
+			);
+		}
+
 		return this as PresSlide;
 	}
 
@@ -249,7 +268,10 @@ export default class Slide implements PresSlide {
 	 * @param {TextPropsOptions} options - text options
 	 * @return {PresSlide} this Slide
 	 */
-	addText(text: string | TextProps[], options?: TextPropsOptions): PresSlide {
+	addText(
+		text: string | TextProps[],
+		options?: TextPropsOptions & Partial<ShapeProps>
+	): PresSlide {
 		const textParam =
 			typeof text === 'string' || typeof text === 'number'
 				? [{ text, options }]

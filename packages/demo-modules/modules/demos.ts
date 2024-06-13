@@ -7,7 +7,7 @@
  * BLD.: 20230319
  */
 
-import { COMPRESS, CUST_NAME } from '../modules/enums';
+import { COMPRESS, CUST_NAME } from './enums';
 import { createMasterSlides, testSlideBackgrounds } from './masters';
 import { genSlides_Chart } from './demo_chart';
 import { genSlides_Image } from './demo_image';

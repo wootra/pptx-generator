@@ -183,7 +183,7 @@ function genSlide01(pptx: PptxGenJS) {
 		color: '00EC23',
 		bold: true,
 		italic: true,
-		underline: true,
+		underline: { style: 'wavy', color: pptx.colors.ACCENT4 },
 		margin: 0,
 		isTextBox: true,
 	};
@@ -290,7 +290,7 @@ function genSlide02(pptx: PptxGenJS) {
 					fontFace: 'Arial',
 					color: pptx.colors.ACCENT2,
 					align: 'center',
-					underline: true,
+					underline: { style: 'dash', color: pptx.colors.ACCENT1 },
 					breakLine: true,
 				},
 			},

@@ -36,6 +36,7 @@
 			referrerpolicy="no-referrer"
 			media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)"
 		/>
+
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css"
@@ -72,70 +73,23 @@
 	<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@master/demos/common/demo.js type="module""></script>
 	-->
 		<!-- LOCAL TESTING:
-	<script src="../../libs/jszip.min.js"></script>
-	<script src="../../dist/pptxgen.min.js"></script>
-	<script src="../modules/demos" type="module"></script>
-	-->
+		-->
+		<!-- <script
+			src="/apps/browser-demo/libs/jszip.min.js"
+			type="module"
+		></script>
+		<script src="/apps/browser-demo/pptxgen.min.js" type="module"></script>
+		<script
+			src="/apps/browser-demo/demo-modules/demos.js"
+			type="module"
+		></script> -->
 		<!-- LOCAL TESTING: bundle
-	-->
-		<script src="./js/pptxgen.bundle.js"></script>
-		<script src="../modules/demos" type="module"></script>
+		<script src="./js/pptxgen.bundle.ts"></script>
+		<script src="../../packages/demo-modules/out/demos.js" type="module"></script>
+		-->
 
-		<script type="module">
-			import {
-				buildDataTable,
-				doAppStart,
-				execGenSlidesFunc,
-				runAllDemos,
-				table2slides1,
-				table2slides2,
-				table2slidesDemoForTab,
-			} from './js/browser.js';
-
-			$('#btnRunAllDemos').click(() => runAllDemos());
-			//
-			$('#btnGenFunc_Chart').click(() => execGenSlidesFunc('Chart'));
-			$('#btnGenFunc_Image').click(() => execGenSlidesFunc('Image'));
-			$('#btnGenFunc_Media').click(() => execGenSlidesFunc('Media'));
-			$('#btnGenFunc_Shape').click(() => execGenSlidesFunc('Shape'));
-			$('#btnGenFunc_Text').click(() => execGenSlidesFunc('Text'));
-			$('#btnGenFunc_Table').click(() => execGenSlidesFunc('Table'));
-			$('#btnGenFunc_Master').click(() => execGenSlidesFunc('Master'));
-			//
-			$('#numTab2SlideRows').change(() => buildDataTable());
-			$('#table2slides1').click(() => table2slides1());
-			$('#table2slides2').click(() => table2slides2(false));
-			$('#table2slides3').click(() => table2slides2(true));
-			$('#tab2slides_tabNoStyle').click(() =>
-				table2slidesDemoForTab('tabNoStyle', {
-					fill: { color: 'f1f1f1' },
-				})
-			);
-			$('#tab2slides_tabInheritStyle').click(() =>
-				table2slidesDemoForTab('tabInheritStyle', {
-					fill: { color: 'f1f1f1' },
-				})
-			);
-			$('#tab2slides_tabColspan').click(() =>
-				table2slidesDemoForTab('tabColspan')
-			);
-			$('#tab2slides_tabRowspan').click(() =>
-				table2slidesDemoForTab('tabRowspan')
-			);
-			$('#tab2slides_tabRowColspan').click(() =>
-				table2slidesDemoForTab('tabRowColspan')
-			);
-			$('#tab2slides_tabLotsOfLines').click(() =>
-				table2slidesDemoForTab('tabLotsOfLines', { verbose: false })
-			);
-			$('#tab2slides_tabLargeCellText').click(() =>
-				table2slidesDemoForTab('tabLargeCellText', { verbose: false })
-			);
-
-			$(document).ready(() => {
-				doAppStart();
-			});
-		</script>
+		<script type="module"></script>
+		<script type="module" src="/src/index.tsx"></script>
 	</head>
 	<body class="bg-light" id="root"></body>
 </html>

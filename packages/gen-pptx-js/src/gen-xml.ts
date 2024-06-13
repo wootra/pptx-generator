@@ -122,7 +122,7 @@ function slideObjectToXml(slide: PresSlide | SlideLayout): string {
 		'<a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>';
 
 	// STEP 3: Loop over all Slide.data objects and add them to this slide
-	slide._slideObjects.forEach((slideItemObj: ISlideObject, idx: number) => {
+	slide._slideObjects?.forEach((slideItemObj: ISlideObject, idx: number) => {
 		let x = 0;
 		let y = 0;
 		let cx = getSmartParseNumber('75%', 'X', slide._presLayout);

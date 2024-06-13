@@ -7,7 +7,7 @@
  * BLD.: 20230207
  */
 import PptxGenJS, {
-	BorderProps,
+	BorderPropsOpt,
 	PresSlide,
 	SectionProps,
 	TableCell,
@@ -661,7 +661,7 @@ function genSlide04(pptx: PptxGenJS) {
 	// Complex/Compound border
 	optsSub.y = 3.9;
 	slide.addText('Complex Cell Borders:', optsSub);
-	let arrBorder1: BorderProps[] = [
+	let arrBorder1: BorderPropsOpt = [
 		{ color: 'FF0000', pt: 1 },
 		{ color: '00ff00', pt: 3 },
 		{ color: '0000ff', pt: 5 },
@@ -679,7 +679,7 @@ function genSlide04(pptx: PptxGenJS) {
 		align: 'center',
 		valign: 'middle',
 	});
-	let arrBorder2: (BorderProps | null)[] = [
+	let arrBorder2: BorderPropsOpt = [
 		{ type: 'dash', color: 'ff0000', pt: 2 },
 		null,
 		{ type: 'dash', color: '0000ff', pt: 5 },
@@ -1007,7 +1007,8 @@ function genSlide07(pptx: PptxGenJS) {
 					align: 'center',
 					bold: true,
 					colspan: 3,
-					colW: 4,
+
+					// colW: 4,
 				},
 			},
 		] as TableCell[],

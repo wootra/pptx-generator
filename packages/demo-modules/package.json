@@ -1,24 +1,28 @@
 {
-    "name": "@repo/demo-modules",
-    "version": "1.0.0",
-    "description": "",
-    "main": "modules/demos.ts",
-    "module": "modules/demos.ts",
-    "types": "modules/demos.ts",
-    "files": [
-        "modules",
-        "common"
-    ],
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "gen-pptx-js": "workspace:*"
-    },
-    "devDependencies": {
-        "vite": "^5.2.11"
-    }
+	"name": "@repo/demo-modules",
+	"version": "1.0.0",
+	"description": "",
+	"main": "modules/demos.ts",
+	"module": "modules/demos.ts",
+	"types": "modules/demos.ts",
+	"files": [
+		"modules",
+		"common"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"gen-pptx-js": "workspace:*",
+		"jquery": "^3.7.1"
+	},
+	"devDependencies": {
+		"@types/jquery": "^3.5.29",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.11"
+	}
 }

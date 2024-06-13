@@ -111,7 +111,7 @@ function genSlide01(pptx: PptxGenJS) {
 		h: 1.5,
 		rectRadius: 1,
 		fill: { color: pptx.colors.ACCENT5 },
-		line: '151515',
+		line: { color: '151515' },
 		lineSize: 1,
 	}); // TEST: DEPRECATED: `fill`,`line`,`lineSize`
 	slide.addShape(pptx.shapes.ARC, {

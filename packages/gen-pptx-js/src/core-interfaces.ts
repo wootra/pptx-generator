@@ -131,6 +131,16 @@ export interface BorderProps {
 	 */
 	pt?: number;
 }
+
+export type BorderPropsOpt =
+	| BorderProps
+	| null
+	| [
+			BorderProps | null,
+			BorderProps | null,
+			BorderProps | null,
+			BorderProps | null,
+	  ];
 // used by: image, object, text,
 export interface HyperlinkProps {
 	_rId?: number;
@@ -994,7 +1004,15 @@ export interface TableProps
 	 * - single value is applied to all 4 sides
 	 * - array of values in TRBL order for individual sides
 	 */
-	border?: BorderProps | [BorderProps, BorderProps, BorderProps, BorderProps];
+	border?:
+		| BorderProps
+		| null
+		| [
+				BorderProps | null,
+				BorderProps | null,
+				BorderProps | null,
+				BorderProps | null,
+		  ];
 	/**
 	 * Width of table columns (inches)
 	 * - single value is applied to every column equally based upon `w`
@@ -1972,7 +1990,7 @@ export interface PresSlide extends SlideBaseProps {
 
 	addChart: (
 		type: CHART_NAME | IChartMulti[],
-		data: IOptsChartData[],
+		data: IOptsChartData[] | IChartOpts,
 		options?: IChartOpts
 	) => PresSlide;
 	addImage: (options: ImageProps) => PresSlide;
@@ -1982,7 +2000,7 @@ export interface PresSlide extends SlideBaseProps {
 	addTable: (tableRows: TableRow[], options?: TableProps) => PresSlide;
 	addText: (
 		text: string | TextProps[],
-		options?: TextPropsOptions
+		options?: TextPropsOptions & Partial<ShapeProps>
 	) => PresSlide;
 	get newAutoPagedSlides(): PresSlide[];
 

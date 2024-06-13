@@ -27,6 +27,7 @@ import {
 	AddSlideProps,
 	BackgroundProps,
 	IChartMulti,
+	IChartOpts,
 	IChartOptsLib,
 	IOptsChartData,
 	ISlideObject,
@@ -163,12 +164,13 @@ export function createSlideMaster(
  *    ]
  * }
  */
-export function addChartDefinition(
-	target: PresSlide,
-	type: CHART_NAME | IChartMulti[],
-	data: IOptsChartData[],
-	opt?: IChartOptsLib
-): object {
+type ChartDefinitionArgs =
+	| [PresSlide, CHART_NAME, IOptsChartData[], IChartOptsLib | IChartOpts]
+	| [PresSlide, IChartMulti[], IChartOptsLib | IChartOpts]
+	| [PresSlide, IChartMulti[], IChartOptsLib | IChartOpts, undefined];
+export function addChartDefinition(...args: ChartDefinitionArgs): object {
+	const [target, type, data, opt] = args;
+
 	function correctGridLineOptions(glOpts: OptsChartGridLine): void {
 		if (!glOpts || glOpts.style === 'none') return;
 		if (
@@ -205,7 +207,7 @@ export function addChartDefinition(
 	// EX: addChartDefinition([ { type:pptx.charts.BAR, data:{name:'', labels:[], values[]} }, {<etc>} ])
 	// Multi-Type Charts
 	let tmpOpt = null;
-	let tmpData = [];
+	let tmpData: IOptsChartData[] = [];
 	if (Array.isArray(type)) {
 		// For multi-type charts there needs to be data for each type,
 		// as well as a single data source for non-series operations.
@@ -216,7 +218,7 @@ export function addChartDefinition(
 		});
 		tmpOpt = data || opt;
 	} else {
-		tmpData = data;
+		tmpData = data as IOptsChartData[];
 		tmpOpt = opt;
 	}
 	tmpData.forEach((item, i) => {
